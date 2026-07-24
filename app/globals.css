@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-navy: #1A1F2E;
+    --color-navy-deep: #0F1419;
+    --color-parchment: #F5F0E8;
+    --color-parchment-dark: #E8E0D4;
+    --color-slate: #2D3447;
+    --color-amber: #D4A853;
+    --color-amber-light: #E8C878;
+    --color-coral: #C75B3F;
+    --color-coral-light: #D97B5D;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+  }
+
+  /* Custom Font Classes */
+  .font-display {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  .font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 20, 25, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #D4A853;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C878;
+}
+
+/* Dark / Light Mode Custom Utilities */
+.dark {
+  --bg-primary: #1A1F2E;
+  --bg-secondary: #0F1419;
+  --bg-card: #2D3447;
+  --bg-card-alt: #232938;
+  --text-main: #F5F0E8;
+  --text-muted: #94A3B8;
+  --border-color: rgba(212, 168, 83, 0.15);
+}
+
+.light {
+  --bg-primary: #F8F6F0;
+  --bg-secondary: #EFECE6;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #F1ECE3;
+  --text-main: #1A1F2E;
+  --text-muted: #5A6378;
+  --border-color: rgba(26, 31, 46, 0.12);
+}
+
+/* Scanline / Grid background overlay for data aesthetic */
+.data-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(212, 168, 83, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 168, 83, 0.05) 1px, transparent 1px);
+}
+
+.data-grid-pattern-light {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(26, 31, 46, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 31, 46, 0.04) 1px, transparent 1px);
+}
+
+/* Pulse animation for active data nodes */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(212, 168, 83, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 168, 83, 0.8);
+  }
+}
+
+.active-data-node {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Terminal blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
