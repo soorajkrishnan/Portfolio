@@ -60,7 +60,7 @@ export default function PipelineCaseStudies() {
         analytics: 'Grafana Real-time Health Dashboards & Materialized Views',
       },
       metrics: [
-        { label: 'Ingestion Speed', value: '2.4M msgs/sec' },
+        { label: 'Pipeline Model', value: 'Medallion Lakehouse' },
         { label: 'Dashboard Latency', value: '< 100ms' },
         { label: 'Uptime Visibility', value: '100% Real-time' },
       ],
@@ -246,10 +246,6 @@ def train_lda_topic_model(documents: list[str]):
     <section id="pipelines" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/30 text-xs font-mono text-[#E8C878] mb-3">
-          <Layers className="w-3.5 h-3.5" />
-          <span className="uppercase tracking-wider">Engineered Architecture</span>
-        </div>
         <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
           Data Systems &amp; Pipelines Built by Sooraj
         </h2>

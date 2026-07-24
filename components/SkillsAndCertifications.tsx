@@ -115,10 +115,6 @@ export default function SkillsAndCertifications() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D4A853]/10 border border-[#D4A853]/30 text-xs font-mono text-[#D4A853] mb-3">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>TECHNICAL TAXONOMY &amp; CERTIFICATIONS</span>
-          </div>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
             Skills &amp; Industry <span className="text-[#D4A853]">Credentials</span>
           </h2>

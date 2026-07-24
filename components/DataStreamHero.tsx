@@ -216,27 +216,6 @@ export default function DataStreamHero({
 
       {/* Main Content Overlay */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Stream Mode & Live Pulse Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center space-x-3 px-3.5 py-1.5 rounded-full bg-[#2D3447]/80 backdrop-blur-md border border-[#D4A853]/40 text-xs font-mono text-[#E8C878] mb-6 shadow-lg"
-        >
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="font-semibold tracking-wider uppercase text-[11px] text-[#F5F0E8]">
-            Cloud Data Engineer
-          </span>
-          <span className="text-[#8A93A8]">|</span>
-          <span className="text-amber-300 flex items-center font-bold">
-            <Activity className="w-3 h-3 mr-1 text-emerald-400" />
-            {(throughput / 1000000).toFixed(2)}M msgs/sec
-          </span>
-        </motion.div>
-
         {/* Hero Title */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -290,38 +269,7 @@ export default function DataStreamHero({
           </button>
         </motion.div>
 
-        {/* Stream Simulator Controls */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="mt-10 p-2 sm:p-3 rounded-2xl bg-[#0F1419]/80 backdrop-blur-md border border-[#D4A853]/20 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-mono text-gray-400"
-        >
-          <span className="flex items-center text-[#D4A853] font-bold px-2">
-            <Layers className="w-3.5 h-3.5 mr-1" /> Stream Mode:
-          </span>
 
-          {[
-            { id: 'medallion', label: '🥉 🥈 🥇 Medallion Architecture' },
-            { id: 'high_throughput', label: '⚡ High Throughput (Kafka/EventHub)' },
-            { id: 'sine_wave', label: '🌊 Sine Wave Data River' },
-          ].map((mode) => (
-            <button
-              key={mode.id}
-              onClick={() => {
-                setStreamMode(mode.id as any);
-                addLog('STREAM_EVENT', `Hero WebGL Stream Mode Changed: ${mode.label}`, 'Canvas particle simulation re-indexed');
-              }}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                streamMode === mode.id
-                  ? 'bg-[#D4A853] text-[#1A1F2E] font-bold shadow'
-                  : 'bg-[#1A1F2E] text-gray-300 hover:text-white border border-gray-800'
-              }`}
-            >
-              {mode.label}
-            </button>
-          ))}
-        </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div
