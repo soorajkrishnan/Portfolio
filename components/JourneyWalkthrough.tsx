@@ -221,18 +221,18 @@ export default function JourneyWalkthrough() {
   });
 
   return (
-    <section id="journey" className="py-24 bg-[#141824] relative overflow-hidden text-[#F5F0E8]">
+    <section id="journey" className="py-24 bg-[#F1ECE3] dark:bg-[#141824] relative overflow-hidden text-[#1A1F2E] dark:text-[#F5F0E8] transition-colors duration-300">
       {/* Background Decorative Data River */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#D4A853]/10 via-[#141824]/90 to-[#0B0E14] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#D4A853]/10 via-transparent dark:via-[#141824]/90 to-transparent dark:to-[#0B0E14] pointer-events-none" />
       <div className="absolute inset-0 data-grid-pattern opacity-15 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
-            Engineering <span className="text-[#D4A853]">Journey</span>
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
+            Engineering <span className="text-[#B3822A] dark:text-[#D4A853]">Journey</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-300 font-body leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 font-body leading-relaxed">
             Data engineering milestones in descending chronological order — from real-time Azure Data Explorer telemetry down to academic foundations.
           </p>
         </div>
@@ -254,8 +254,8 @@ export default function JourneyWalkthrough() {
               }}
               className={`px-3.5 py-2 rounded-xl border transition-all ${
                 categoryFilter === cat.id
-                  ? 'bg-[#2D3447] text-[#D4A853] border-[#D4A853] font-bold shadow-md'
-                  : 'bg-[#0B0E14]/80 text-gray-400 border-gray-800 hover:text-white hover:border-gray-700'
+                  ? 'bg-[#D4A853] dark:bg-[#2D3447] text-[#1A1F2E] dark:text-[#D4A853] border-[#B3822A] dark:border-[#D4A853] font-bold shadow-md'
+                  : 'bg-white dark:bg-[#0B0E14]/80 text-gray-700 dark:text-gray-400 border-gray-300 dark:border-gray-800 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-700'
               }`}
             >
               {cat.label}
@@ -280,21 +280,21 @@ export default function JourneyWalkthrough() {
               >
                 {/* Glowing Timeline Marker Node */}
                 <div className="absolute left-5 sm:left-8 top-6 transform -translate-x-1/2 z-20 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-2xl bg-[#0B0E14] border-2 border-[#D4A853] flex items-center justify-center shadow-lg shadow-[#D4A853]/20 text-[#D4A853]">
+                  <div className="w-10 h-10 rounded-2xl bg-white dark:bg-[#0B0E14] border-2 border-[#B3822A] dark:border-[#D4A853] flex items-center justify-center shadow-md dark:shadow-lg text-[#B3822A] dark:text-[#D4A853]">
                     {step.icon}
                   </div>
                 </div>
 
                 {/* Full-Width Milestone Card (Fills 100% space) */}
                 <div className="w-full pl-14 sm:pl-20">
-                  <div className="bg-[#0B0E14] border border-gray-800 hover:border-[#D4A853]/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-[#D4A853]/10 group">
+                  <div className="bg-white dark:bg-[#0B0E14] border border-gray-200 dark:border-gray-800 hover:border-[#B3822A]/60 dark:hover:border-[#D4A853]/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 shadow-md dark:shadow-2xl hover:shadow-xl group">
                     {/* Header Row */}
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-800/80 pb-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 dark:border-gray-800/80 pb-4">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-[#D4A853] text-[#1A1F2E]">
                           {step.year}
                         </span>
-                        <span className="text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-500/30">
+                        <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-300 dark:border-emerald-500/30">
                           {step.period}
                         </span>
                         {step.isLatest && (
@@ -302,12 +302,12 @@ export default function JourneyWalkthrough() {
                             CURRENT ROLE
                           </span>
                         )}
-                        <span className="text-xs font-mono text-gray-400 bg-[#1A1F2E] px-2.5 py-0.5 rounded border border-gray-800">
+                        <span className="text-xs font-mono text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-[#1A1F2E] px-2.5 py-0.5 rounded border border-gray-200 dark:border-gray-800">
                           {step.badge}
                         </span>
                       </div>
 
-                      <span className="text-xs font-mono text-gray-400">
+                      <span className="text-xs font-mono text-gray-600 dark:text-gray-400 font-medium">
                         {step.institution}
                       </span>
                     </div>
@@ -316,28 +316,28 @@ export default function JourneyWalkthrough() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
                       {/* Left Column (7 cols): Content & Key Deliverables */}
                       <div className="lg:col-span-7 space-y-4">
-                        <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#F5F0E8] group-hover:text-[#D4A853] transition-colors">
+                        <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
                           {step.title}
                         </h3>
 
-                        <p className="text-xs sm:text-sm text-amber-200 font-display font-medium leading-relaxed bg-[#1A1F2E]/60 p-3.5 rounded-xl border-l-4 border-[#D4A853]">
+                        <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-display font-medium leading-relaxed bg-amber-500/10 dark:bg-[#1A1F2E]/60 p-3.5 rounded-xl border-l-4 border-[#B3822A] dark:border-[#D4A853]">
                           &ldquo;{step.shortDesc}&rdquo;
                         </p>
 
-                        <p className="text-xs sm:text-sm text-gray-300 font-body leading-relaxed">
+                        <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-body leading-relaxed">
                           {step.detail}
                         </p>
 
                         {/* Deliverables */}
                         <div>
-                          <h4 className="font-mono text-xs text-[#D4A853] uppercase tracking-wider font-bold mb-2 flex items-center">
-                            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-400" />
+                          <h4 className="font-mono text-xs text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider font-bold mb-2 flex items-center">
+                            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-500 dark:text-amber-400" />
                             Key Outcomes &amp; Accomplishments:
                           </h4>
                           <ul className="space-y-2">
                             {step.highlights.map((item, hIdx) => (
-                              <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-300">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                              <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-700 dark:text-gray-300">
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                                 <span>{item}</span>
                               </li>
                             ))}

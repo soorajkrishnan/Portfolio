@@ -145,7 +145,7 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
   );
 
   return (
-    <section id="projects" className="py-24 bg-[#0F1419] relative overflow-hidden">
+    <section id="projects" className="py-24 bg-[#F8F6F0] dark:bg-[#0F1419] relative overflow-hidden transition-colors duration-300">
       {/* Background Decorative Grid */}
       <div className="absolute inset-0 data-grid-pattern opacity-10 pointer-events-none" />
 
@@ -153,10 +153,10 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
-              Engineering <span className="text-[#D4A853]">Timeline</span>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
+              Engineering <span className="text-[#B3822A] dark:text-[#D4A853]">Timeline</span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-300 font-body max-w-xl leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 font-body max-w-xl leading-relaxed">
               Data architecture projects in chronological sequence: from NLP topic modeling down to real-time Azure Data Explorer telemetry.
             </p>
           </div>
@@ -178,8 +178,8 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
                 }}
                 className={`px-3.5 py-2 rounded-xl border transition-all ${
                   filter === tab.id
-                    ? 'bg-[#D4A853] text-[#1A1F2E] font-bold border-[#D4A853] shadow-md scale-105'
-                    : 'bg-[#1A1F2E] text-gray-300 border-gray-800 hover:text-white hover:border-gray-700'
+                    ? 'bg-[#D4A853] text-[#1A1F2E] font-bold border-[#B3822A] dark:border-[#D4A853] shadow-md scale-105'
+                    : 'bg-white dark:bg-[#1A1F2E] text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-800 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-700'
                 }`}
               >
                 {tab.label}
@@ -211,7 +211,7 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
                   <div className="absolute left-6 md:left-1/2 top-0 transform -translate-x-1/2 z-20 flex items-center justify-center">
                     <motion.div
                       whileHover={{ scale: 1.15, rotate: 5 }}
-                      className="w-12 h-12 rounded-2xl bg-[#0F1419] border-2 border-[#D4A853] flex items-center justify-center shadow-xl shadow-[#D4A853]/20 text-[#D4A853] font-mono text-xs font-bold"
+                      className="w-12 h-12 rounded-2xl bg-white dark:bg-[#0F1419] border-2 border-[#B3822A] dark:border-[#D4A853] flex items-center justify-center shadow-md dark:shadow-xl text-[#B3822A] dark:text-[#D4A853] font-mono text-xs font-bold"
                     >
                       <span>{project.orderNum}</span>
                     </motion.div>
@@ -225,18 +225,18 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
                         : 'md:ml-auto md:text-left'
                     }`}
                   >
-                    <div className="bg-[#1A1F2E] border border-gray-800 hover:border-[#D4A853] rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-[#D4A853]/15 group relative overflow-hidden">
+                    <div className="bg-white dark:bg-[#1A1F2E] border border-gray-200 dark:border-gray-800 hover:border-[#B3822A] dark:hover:border-[#D4A853] rounded-2xl p-6 sm:p-8 transition-all duration-300 shadow-md dark:shadow-2xl hover:shadow-xl group relative overflow-hidden">
                       {/* Top Header Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-gray-800/80 pb-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-gray-200 dark:border-gray-800/80 pb-4">
                         <div className="flex items-center space-x-3">
-                          <div className="p-3 rounded-xl bg-[#0F1419] border border-gray-800 group-hover:border-[#D4A853]/50 transition-colors shadow-inner">
+                          <div className="p-3 rounded-xl bg-gray-100 dark:bg-[#0F1419] border border-gray-200 dark:border-gray-800 group-hover:border-[#B3822A]/50 dark:group-hover:border-[#D4A853]/50 transition-colors shadow-inner">
                             {project.icon}
                           </div>
                           <div>
-                            <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider block">
+                            <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase tracking-wider block">
                               {project.stepBadge}
                             </span>
-                            <span className="text-xs font-mono text-gray-400">
+                            <span className="text-xs font-mono text-gray-600 dark:text-gray-400 font-medium">
                               {project.categoryLabel}
                             </span>
                           </div>
@@ -250,18 +250,18 @@ export default function SelectedProjects({ onOpenTerminal }: SelectedProjectsPro
                       </div>
 
                       {/* Project Title */}
-                      <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#F5F0E8] group-hover:text-[#D4A853] transition-colors">
+                      <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
                         {project.title}
                       </h3>
 
                       {/* Impact Statement */}
-                      <p className="text-xs font-mono text-emerald-400 mt-2 font-semibold flex items-center">
-                        <Zap className="w-3.5 h-3.5 mr-1 text-amber-400 shrink-0" />
+                      <p className="text-xs font-mono text-emerald-700 dark:text-emerald-400 mt-2 font-semibold flex items-center">
+                        <Zap className="w-3.5 h-3.5 mr-1 text-amber-500 shrink-0" />
                         <span>{project.impact}</span>
                       </p>
 
                       {/* Description */}
-                      <p className="mt-3 text-xs sm:text-sm text-gray-300 font-body leading-relaxed">
+                      <p className="mt-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-body leading-relaxed">
                         {project.description}
                       </p>
 

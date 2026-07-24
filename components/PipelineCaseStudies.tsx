@@ -246,10 +246,10 @@ def train_lda_topic_model(documents: list[str]):
     <section id="pipelines" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#F5F0E8] tracking-tight">
+        <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
           Data Systems &amp; Pipelines Built by Sooraj
         </h2>
-        <p className="mt-3 text-base sm:text-lg text-[#94A3B8] font-body">
+        <p className="mt-3 text-base sm:text-lg text-gray-600 dark:text-[#94A3B8] font-body">
           In-depth architectural breakdowns of real-time streaming, dynamic API generators, AWS document AI platforms, and ML topic modeling.
         </p>
       </div>
@@ -270,7 +270,7 @@ def train_lda_topic_model(documents: list[str]):
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-mono text-xs sm:text-sm transition-all shrink-0 ${
                 isActive
                   ? 'bg-[#D4A853] text-[#1A1F2E] font-bold shadow-lg scale-105'
-                  : 'bg-[#2D3447]/80 text-gray-300 hover:text-white border border-gray-700/80 hover:border-[#D4A853]/40'
+                  : 'bg-white dark:bg-[#2D3447]/80 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white border border-gray-200 dark:border-gray-700/80 hover:border-[#B3822A] dark:hover:border-[#D4A853]/40'
               }`}
             >
               <TabIcon className="w-4 h-4" />
@@ -286,32 +286,32 @@ def train_lda_topic_model(documents: list[str]):
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="bg-[#2D3447]/90 backdrop-blur-xl border border-[#D4A853]/30 rounded-2xl p-6 sm:p-10 shadow-2xl"
+        className="bg-white dark:bg-[#2D3447]/90 backdrop-blur-xl border border-gray-200 dark:border-[#D4A853]/30 rounded-2xl p-6 sm:p-10 shadow-xl dark:shadow-2xl"
       >
         {/* Card Header */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-700/60 pb-6 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 dark:border-gray-700/60 pb-6 mb-6">
           <div className="flex items-center space-x-4">
-            <div className="p-3.5 rounded-xl bg-[#0F1419] text-[#D4A853] border border-[#D4A853]/30 shadow-inner">
+            <div className="p-3.5 rounded-xl bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#D4A853] border border-gray-300 dark:border-[#D4A853]/30 shadow-inner">
               <IconComponent className="w-7 h-7" />
             </div>
             <div>
-              <span className="text-xs font-mono text-[#D4A853] uppercase tracking-wider block">
+              <span className="text-xs font-mono text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider block font-semibold">
                 {current.category}
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F0E8]">
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#1A1F2E] dark:text-[#F5F0E8]">
                 {current.title}
               </h3>
             </div>
           </div>
 
-          <div className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 font-mono text-xs sm:text-sm font-bold flex items-center space-x-2">
+          <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 rounded-xl text-emerald-800 dark:text-emerald-400 font-mono text-xs sm:text-sm font-bold flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4" />
             <span>{current.impact}</span>
           </div>
         </div>
 
         {/* Inner Subtabs: Overview | Architecture | Code */}
-        <div className="flex items-center space-x-2 mb-6 border-b border-gray-800 pb-3 font-mono text-xs">
+        <div className="flex items-center space-x-2 mb-6 border-b border-gray-200 dark:border-gray-800 pb-3 font-mono text-xs">
           {[
             { id: 'overview', label: '📋 System Overview' },
             { id: 'architecture', label: '🏗️ Pipeline Architecture Flow' },
@@ -322,8 +322,8 @@ def train_lda_topic_model(documents: list[str]):
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#0F1419] text-[#E8C878] border border-[#D4A853]/40 font-bold'
-                  : 'text-gray-400 hover:text-gray-200'
+                  ? 'bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#E8C878] border border-gray-300 dark:border-[#D4A853]/40 font-bold'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-gray-200'
               }`}
             >
               {tab.label}
@@ -335,17 +335,17 @@ def train_lda_topic_model(documents: list[str]):
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8 space-y-4">
-              <h4 className="text-sm font-mono text-[#D4A853] uppercase font-semibold">Problem &amp; Engineered Solution</h4>
-              <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-body">
+              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] uppercase font-semibold">Problem &amp; Engineered Solution</h4>
+              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-body">
                 {current.summary}
               </p>
 
-              <h4 className="text-sm font-mono text-[#D4A853] uppercase font-semibold pt-2">Key Metrics &amp; Business Value</h4>
+              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] uppercase font-semibold pt-2">Key Metrics &amp; Business Value</h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {current.metrics.map((m, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#0F1419] border border-gray-800">
-                    <span className="text-xs font-mono text-gray-400 block">{m.label}</span>
-                    <strong className="text-xl font-display text-[#E8C878] font-bold mt-1 block">
+                  <div key={idx} className="p-4 rounded-xl bg-gray-50 dark:bg-[#0F1419] border border-gray-200 dark:border-gray-800">
+                    <span className="text-xs font-mono text-gray-600 dark:text-gray-400 block">{m.label}</span>
+                    <strong className="text-xl font-display text-[#B3822A] dark:text-[#E8C878] font-bold mt-1 block">
                       {m.value}
                     </strong>
                   </div>
@@ -353,9 +353,9 @@ def train_lda_topic_model(documents: list[str]):
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-[#0F1419] p-5 rounded-xl border border-gray-800 flex flex-col justify-between">
+            <div className="lg:col-span-4 bg-gray-50 dark:bg-[#0F1419] p-5 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
               <div>
-                <h4 className="text-xs font-mono text-gray-400 uppercase mb-3">Technologies Employed</h4>
+                <h4 className="text-xs font-mono text-gray-600 dark:text-gray-400 uppercase mb-3 font-semibold">Technologies Employed</h4>
                 <div className="flex flex-wrap gap-2">
                   {current.stack.map((t) => (
                     <span

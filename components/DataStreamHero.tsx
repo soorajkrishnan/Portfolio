@@ -93,12 +93,13 @@ export default function DataStreamHero({
 
     const render = () => {
       time += 0.02;
-      ctx.fillStyle = '#1A1F2E';
+      const isDark = document.documentElement.classList.contains('dark');
+      ctx.fillStyle = isDark ? '#1A1F2E' : '#F8F6F0';
       ctx.fillRect(0, 0, width, height);
 
       // Draw subtle flow paths / background sine wave guides
       ctx.lineWidth = 0.5;
-      ctx.strokeStyle = 'rgba(212, 168, 83, 0.04)';
+      ctx.strokeStyle = isDark ? 'rgba(212, 168, 83, 0.04)' : 'rgba(26, 31, 46, 0.05)';
       for (let y = height * 0.2; y < height; y += 120) {
         ctx.beginPath();
         for (let x = 0; x < width; x += 20) {
@@ -203,7 +204,7 @@ export default function DataStreamHero({
   }, [streamMode]);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-16 bg-[#1A1F2E] transition-colors duration-300">
+    <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-16 bg-[#F8F6F0] dark:bg-[#1A1F2E] transition-colors duration-300">
       {/* WebGL / Canvas Data Stream Background */}
       <canvas
         ref={canvasRef}
@@ -212,7 +213,7 @@ export default function DataStreamHero({
       />
 
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 data-grid-pattern opacity-40 pointer-events-none z-0" />
+      <div className="absolute inset-0 data-grid-pattern dark:data-grid-pattern opacity-40 pointer-events-none z-0" />
 
       {/* Main Content Overlay */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
@@ -221,9 +222,9 @@ export default function DataStreamHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F5F0E8] tracking-tight leading-[1.05] max-w-5xl"
+          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight leading-[1.05] max-w-5xl"
         >
-          Architecting <span className="text-[#D4A853] underline decoration-[#D4A853]/30 decoration-wavy">Data Pipelines</span> That Scale
+          Architecting <span className="text-[#B3822A] dark:text-[#D4A853] underline decoration-[#B3822A]/40 dark:decoration-[#D4A853]/30 decoration-wavy">Data Pipelines</span> That Scale
         </motion.h1>
 
         {/* Subtitle */}
@@ -231,9 +232,9 @@ export default function DataStreamHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-6 text-base sm:text-xl text-[#94A3B8] max-w-3xl font-body leading-relaxed"
+          className="mt-6 text-base sm:text-xl text-gray-700 dark:text-[#94A3B8] max-w-3xl font-body leading-relaxed font-normal"
         >
-          Hi, I&apos;m <strong className="text-[#F5F0E8] font-semibold">Sooraj Krishnan V S</strong>. 4+ years building high-throughput ETL/ELT pipelines, Medallion Lakehouses with Azure Event Hubs &amp; ADX, automated FastAPI generators, and AWS AI document parsing platforms.
+          Hi, I&apos;m <strong className="text-[#1A1F2E] dark:text-[#F5F0E8] font-semibold">Sooraj Krishnan V S</strong>. 4+ years building high-throughput ETL/ELT pipelines, Medallion Lakehouses with Azure Event Hubs &amp; ADX, automated FastAPI generators, and AWS AI document parsing platforms.
         </motion.p>
 
         {/* Primary CTA Buttons */}
@@ -253,18 +254,18 @@ export default function DataStreamHero({
 
           <button
             onClick={onOpenTerminal}
-            className="px-6 py-3.5 rounded-full bg-[#2D3447]/90 hover:bg-[#2D3447] text-[#F5F0E8] border border-[#D4A853]/40 hover:border-[#D4A853] font-mono text-sm sm:text-base shadow-md hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+            className="px-6 py-3.5 rounded-full bg-white dark:bg-[#2D3447]/90 hover:bg-gray-100 dark:hover:bg-[#2D3447] text-[#1A1F2E] dark:text-[#F5F0E8] border border-gray-300 dark:border-[#D4A853]/40 hover:border-[#B3822A] dark:hover:border-[#D4A853] font-mono text-sm sm:text-base shadow-md hover:scale-105 transition-all duration-300 flex items-center space-x-2"
           >
-            <Terminal className="w-4 h-4 text-[#D4A853]" />
+            <Terminal className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
             <span>Launch KQL Shell</span>
-            <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-black/40 text-gray-400 rounded">Ctrl+K</span>
+            <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-black/10 dark:bg-black/40 text-gray-600 dark:text-gray-400 rounded">Ctrl+K</span>
           </button>
 
           <button
             onClick={onOpenResume}
-            className="px-5 py-3.5 rounded-full bg-transparent border border-gray-600 hover:border-[#D4A853] text-gray-300 hover:text-white font-display text-sm sm:text-base transition-all duration-300 flex items-center space-x-2"
+            className="px-5 py-3.5 rounded-full bg-transparent border border-gray-400 dark:border-gray-600 hover:border-[#B3822A] dark:hover:border-[#D4A853] text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-display text-sm sm:text-base transition-all duration-300 flex items-center space-x-2"
           >
-            <FileDown className="w-4 h-4 text-[#D4A853]" />
+            <FileDown className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
             <span>View Resume</span>
           </button>
         </motion.div>

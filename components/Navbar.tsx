@@ -50,34 +50,34 @@ export default function Navbar({
     <header
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#1A1F2E]/90 backdrop-blur-xl border-b border-[#D4A853]/20 shadow-xl py-3'
+          ? 'bg-white/90 dark:bg-[#1A1F2E]/90 backdrop-blur-xl border-b border-gray-200 dark:border-[#D4A853]/20 shadow-xl py-3'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center space-x-2.5 group">
-          <div className="p-2 rounded-xl bg-[#0F1419] border border-[#D4A853]/40 text-[#D4A853] font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
+          <div className="p-2 rounded-xl bg-[#F1ECE3] dark:bg-[#0F1419] border border-gray-300 dark:border-[#D4A853]/40 text-[#B3822A] dark:text-[#D4A853] font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
             {`{ SK }`}
           </div>
           <div>
-            <span className="font-display font-extrabold text-base sm:text-lg text-[#F5F0E8] tracking-wider block">
+            <span className="font-display font-extrabold text-base sm:text-lg text-[#1A1F2E] dark:text-[#F5F0E8] tracking-wider block">
               SOORAJ KRISHNAN V S
             </span>
-            <span className="font-mono text-[10px] text-[#D4A853] uppercase tracking-widest block -mt-1">
+            <span className="font-mono text-[10px] text-[#B3822A] dark:text-[#D4A853] uppercase tracking-widest block -mt-1 font-semibold">
               Cloud Data Engineer
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6 text-xs font-mono tracking-wider">
+        <nav className="hidden lg:flex items-center space-x-6 text-xs font-mono tracking-wider font-semibold">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => addLog('DATA_ACTION', `Navigated to section: #${link.label}`)}
-              className="text-[#F5F0E8] hover:text-[#D4A853] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#D4A853] hover:after:w-full after:transition-all"
+              className="text-[#1A1F2E] dark:text-[#F5F0E8] hover:text-[#B3822A] dark:hover:text-[#D4A853] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#B3822A] dark:after:bg-[#D4A853] hover:after:w-full after:transition-all"
             >
               {link.label}
             </a>
@@ -93,11 +93,11 @@ export default function Navbar({
               onOpenTerminal();
             }}
             title="Open Interactive KQL Terminal (Ctrl+K)"
-            className="p-2 rounded-xl bg-[#2D3447] hover:bg-[#D4A853]/20 border border-[#D4A853]/40 text-[#D4A853] transition-all flex items-center space-x-1.5 text-xs font-mono shadow"
+            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-[#2D3447] dark:hover:bg-[#D4A853]/20 border border-gray-300 dark:border-[#D4A853]/40 text-[#B3822A] dark:text-[#D4A853] transition-all flex items-center space-x-1.5 text-xs font-mono shadow"
           >
-            <Terminal className="w-4 h-4 text-[#D4A853]" />
+            <Terminal className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
             <span className="font-bold">KQL CLI</span>
-            <span className="text-[10px] bg-black/40 px-1 py-0.5 rounded text-gray-400">Ctrl+K</span>
+            <span className="text-[10px] bg-black/10 dark:bg-black/40 px-1 py-0.5 rounded text-gray-600 dark:text-gray-400">Ctrl+K</span>
           </button>
 
           {/* Theme Toggle */}
@@ -107,9 +107,9 @@ export default function Navbar({
               onToggleTheme();
             }}
             title="Toggle Dark / Light Theme"
-            className="p-2 rounded-xl bg-[#2D3447] hover:bg-gray-700 text-[#E8C878] border border-gray-700 transition-all shadow"
+            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-[#2D3447] dark:hover:bg-gray-700 text-amber-600 dark:text-[#E8C878] border border-gray-300 dark:border-gray-700 transition-all shadow"
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-sky-400" />}
+            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-sky-600" />}
           </button>
 
           {/* Resume Trigger */}
@@ -157,14 +157,14 @@ export default function Navbar({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#0F1419] border-b border-[#D4A853]/30 px-4 pt-3 pb-6 font-mono text-sm space-y-3"
+            className="lg:hidden bg-white dark:bg-[#0F1419] border-b border-gray-200 dark:border-[#D4A853]/30 px-4 pt-3 pb-6 font-mono text-sm space-y-3 shadow-xl"
           >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-[#F5F0E8] hover:text-[#D4A853] py-2 border-b border-gray-800"
+                className="block text-[#1A1F2E] dark:text-[#F5F0E8] hover:text-[#B3822A] dark:hover:text-[#D4A853] py-2 border-b border-gray-200 dark:border-gray-800"
               >
                 {link.label}
               </a>
