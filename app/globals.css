@@ -107,3 +107,69 @@
 .terminal-cursor {
   animation: blink 1s step-end infinite;
 }
+
+/* Print Stylesheet for Resume / CV Export */
+@media print {
+  @page {
+    margin: 15mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  /* Hide everything by default during print */
+  nav, footer, header, button, .no-print {
+    display: none !important;
+  }
+
+  .fixed, .backdrop-blur-md, .backdrop-blur-xl {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  .bg-black\/80 {
+    background: transparent !important;
+  }
+
+  #printable-resume-wrapper {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  #printable-resume-wrapper > div:first-child {
+    display: none !important; /* Hide modal top control bar in print */
+  }
+
+  #printable-resume-content {
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 !important;
+  }
+
+  h1, h2, h3, h4, p, span, li, div {
+    color: #111827 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #111827 !important;
+  }
+
+  .border-b-2 {
+    border-bottom: 2px solid #111827 !important;
+  }
+}
