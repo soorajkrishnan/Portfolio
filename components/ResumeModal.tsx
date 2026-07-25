@@ -34,22 +34,30 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           format: 'a4',
         });
 
-        const pageWidth = doc.internal.pageSize.getWidth(); // ~595 pt
-        const margin = 40;
+        const pageWidth = doc.internal.pageSize.getWidth(); // 595.28 pt
+        const pageHeight = doc.internal.pageSize.getHeight(); // 841.89 pt
+        const margin = 36; // 0.5 inch margin
         const contentWidth = pageWidth - margin * 2;
-        let y = 45;
+        let y = 36;
+
+        const checkPageBreak = (neededHeight: number) => {
+          if (y + neededHeight > pageHeight - margin) {
+            doc.addPage();
+            y = 36;
+          }
+        };
 
         // Name Header
         doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(22);
+        doc.setFontSize(20);
         doc.setTextColor(26, 31, 46); // #1A1F2E
         doc.text('SOORAJ KRISHNAN V S', pageWidth / 2, y, { align: 'center' });
-        y += 20;
+        y += 18;
 
         // Subtitle & Contact
         doc.setFont('Helvetica', 'bold');
         doc.setFontSize(10);
-        doc.setTextColor(180, 130, 40); // Gold
+        doc.setTextColor(179, 130, 42); // Gold
         doc.text('CLOUD DATA ENGINEER', pageWidth / 2, y, { align: 'center' });
         y += 14;
 
@@ -57,49 +65,42 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         doc.setFontSize(8.5);
         doc.setTextColor(80, 80, 80);
         doc.text('Kochi, India  |  +91 6282363736  |  soorajkrishnanvs@gmail.com  |  linkedin.com/in/soorajkrishnanvs', pageWidth / 2, y, { align: 'center' });
-        y += 18;
+        y += 16;
 
         // Gold divider
         doc.setDrawColor(212, 168, 83);
-        doc.setLineWidth(1.5);
+        doc.setLineWidth(1.2);
         doc.line(margin, y, pageWidth - margin, y);
-        y += 20;
+        y += 18;
 
         // Section Title Helper
         const addSectionHeader = (title: string) => {
-          if (y > 750) {
-            doc.addPage();
-            y = 40;
-          }
+          checkPageBreak(30);
           doc.setFont('Helvetica', 'bold');
-          doc.setFontSize(11);
+          doc.setFontSize(10);
           doc.setTextColor(26, 31, 46);
           doc.text(title.toUpperCase(), margin, y);
           y += 4;
-          doc.setDrawColor(26, 31, 46);
+          doc.setDrawColor(212, 168, 83);
           doc.setLineWidth(0.8);
           doc.line(margin, y, pageWidth - margin, y);
-          y += 14;
+          y += 12;
         };
 
-        // Bullet Helper
+        // Bullet Item Helper
         const addBulletItem = (text: string) => {
           doc.setFont('Helvetica', 'normal');
-          doc.setFontSize(9);
+          doc.setFontSize(8.5);
           doc.setTextColor(50, 50, 50);
-          const lines = doc.splitTextToSize(text, contentWidth - 15);
-          if (y + lines.length * 12 > 770) {
-            doc.addPage();
-            y = 40;
-          }
-          doc.text('•', margin + 4, y);
+          const lines = doc.splitTextToSize(text, contentWidth - 14);
+          const totalHeight = lines.length * 11 + 3;
+          
+          checkPageBreak(totalHeight);
+
+          doc.text('•', margin + 3, y);
           for (let i = 0; i < lines.length; i++) {
-            if (y > 770) {
-              doc.addPage();
-              y = 40;
-            }
-            doc.text(lines[i], margin + 15, y);
-            y += 12;
+            doc.text(lines[i], margin + 12, y);
+            y += 11;
           }
           y += 2;
         };
@@ -107,30 +108,32 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         // 1. SUMMARY
         addSectionHeader('Professional Summary');
         doc.setFont('Helvetica', 'normal');
-        doc.setFontSize(9);
+        doc.setFontSize(8.5);
         doc.setTextColor(50, 50, 50);
-        const summaryText = 'Data Engineer with 4 years of hands-on experience architecting end-to-end ETL/ELT data pipelines and automating complex workflows across Azure and AWS. Proficient in Azure Data Explorer pipeline design, Spark-based processing, and Medallion Lakehouse implementation. Delivered a 60% reduction in API development time through intelligent automation frameworks. Databricks certified, with expertise in real-time ingestion, data warehousing, cloud-native infrastructure, and scalable system design.';
+        const summaryText = 'Data Engineer with 4 years of hands-on experience architecting end-to-end ETL/ELT data pipelines and automating complex workflows across Azure and AWS cloud ecosystems. Proficient in Azure Data Explorer pipeline design, Spark-based processing, and Medallion Lakehouse implementation. Delivered a 60% reduction in API development time through intelligent automation frameworks. Databricks certified, with expertise in real-time ingestion, data warehousing, cloud-native infrastructure, and scalable system design.';
         const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
+        checkPageBreak(summaryLines.length * 11 + 8);
         for (const line of summaryLines) {
           doc.text(line, margin, y);
-          y += 12;
+          y += 11;
         }
         y += 8;
 
         // 2. EXPERIENCE
         addSectionHeader('Professional Experience');
+        checkPageBreak(28);
         doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(10);
+        doc.setFontSize(9.5);
         doc.setTextColor(26, 31, 46);
         doc.text('Tata Consultancy Services', margin, y);
         doc.setFont('Helvetica', 'normal');
-        doc.setFontSize(9);
+        doc.setFontSize(8.5);
         doc.text('Kochi, India', pageWidth - margin, y, { align: 'right' });
         y += 12;
 
         doc.setFont('Helvetica', 'bolditalic');
-        doc.setFontSize(9);
-        doc.setTextColor(180, 130, 40);
+        doc.setFontSize(8.5);
+        doc.setTextColor(179, 130, 42);
         doc.text('Cloud Data Engineer', margin, y);
         doc.setFont('Helvetica', 'italic');
         doc.setTextColor(100, 100, 100);
@@ -142,56 +145,55 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         addBulletItem('Led AWS document intelligence platform development leveraging Step Functions, Textract, Comprehend, and Augmented AI (A2I), achieving 80%+ extraction precision on complex unstructured PDF documents.');
         addBulletItem('Built automated data ingestion pipelines with BeautifulSoup and pdfplumber to convert unstructured stakeholder reports into indexed PostgreSQL databases, replacing manual web research.');
         addBulletItem('Designed topic modeling systems using Unsupervised Machine Learning and Semantic Analysis (Gensim, SpaCy) on large text datasets, automating trend discovery reports and visual dashboards.');
-        y += 8;
+        y += 6;
 
         // 3. EDUCATION
         addSectionHeader('Education');
+        checkPageBreak(25);
         doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(9.5);
+        doc.setFontSize(9);
         doc.setTextColor(26, 31, 46);
         doc.text('Master of Science in Computer Science', margin, y);
         doc.setFont('Helvetica', 'normal');
-        doc.setFontSize(9);
+        doc.setFontSize(8.5);
         doc.text('2019 – 2021', pageWidth - margin, y, { align: 'right' });
-        y += 12;
+        y += 11;
 
         doc.setFont('Helvetica', 'italic');
-        doc.setFontSize(8.5);
+        doc.setFontSize(8);
         doc.setTextColor(100, 100, 100);
         doc.text('Mahatma Gandhi University, Kottayam, India', margin, y);
         y += 14;
 
+        checkPageBreak(25);
         doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(9.5);
+        doc.setFontSize(9);
         doc.setTextColor(26, 31, 46);
         doc.text('Bachelor of Science in Computer Science', margin, y);
         doc.setFont('Helvetica', 'normal');
-        doc.setFontSize(9);
+        doc.setFontSize(8.5);
         doc.text('2016 – 2019', pageWidth - margin, y, { align: 'right' });
-        y += 12;
+        y += 11;
 
         doc.setFont('Helvetica', 'italic');
-        doc.setFontSize(8.5);
+        doc.setFontSize(8);
         doc.setTextColor(100, 100, 100);
         doc.text('Mahatma Gandhi University, Kottayam, India', margin, y);
-        y += 18;
+        y += 16;
 
         // 4. SKILLS
         addSectionHeader('Technical Skills');
         const skillCategories = [
-          ['Programming:', 'Python, SQL, KQL (Kusto Query Language)'],
-          ['Data Engineering:', 'ETL/ELT Pipeline Development, Medallion Architecture, Stream & Batch Processing'],
-          ['Big Data Platforms:', 'Apache Spark, Databricks, Azure Data Explorer (ADX)'],
-          ['Cloud & DevOps:', 'Microsoft Azure (Event Hub, ADX), AWS (Step Functions, Textract, Comprehend), Terraform, Git, CI/CD'],
-          ['Frameworks & Libraries:', 'FastAPI, Pydantic, Flask, Pandas, Gensim, SpaCy, BeautifulSoup'],
-          ['Databases:', 'PostgreSQL, Azure Data Explorer, Delta Lake, Cosmos DB']
+          ['Programming Languages:', 'Python, SQL, KQL (Kusto Query Language)'],
+          ['Data Architecture:', 'ETL/ELT Pipelines, Medallion Lakehouse, Stream & Batch Ingestion'],
+          ['Big Data Frameworks:', 'Apache Spark, Databricks, Azure Data Explorer (ADX)'],
+          ['Cloud & DevOps:', 'Azure (Event Hub, ADX), AWS (Step Functions, Textract), Terraform, CI/CD'],
+          ['Libraries & Frameworks:', 'FastAPI, Pydantic, Flask, Pandas, Gensim, SpaCy, BeautifulSoup'],
+          ['Database Systems:', 'PostgreSQL, Azure Data Explorer, Delta Lake, Cosmos DB']
         ];
 
         for (const [label, val] of skillCategories) {
-          if (y > 760) {
-            doc.addPage();
-            y = 40;
-          }
+          checkPageBreak(12);
           doc.setFont('Helvetica', 'bold');
           doc.setFontSize(8.5);
           doc.setTextColor(26, 31, 46);
@@ -199,7 +201,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           doc.setFont('Helvetica', 'normal');
           doc.setTextColor(60, 60, 60);
           doc.text(val, margin + 115, y);
-          y += 13;
+          y += 12;
         }
         y += 6;
 
@@ -212,22 +214,18 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         ];
 
         for (const [title, issuer, year] of certList) {
-          if (y > 760) {
-            doc.addPage();
-            y = 40;
-          }
+          checkPageBreak(12);
           doc.setFont('Helvetica', 'bold');
           doc.setFontSize(8.5);
           doc.setTextColor(26, 31, 46);
           doc.text(title, margin, y);
           doc.setFont('Helvetica', 'italic');
           doc.setTextColor(100, 100, 100);
-          doc.text(` | ${issuer}`, margin + doc.getTextWidth(title) * 0.82 + 5, y);
+          doc.text(` (${issuer})`, margin + doc.getTextWidth(title) + 2, y);
           doc.setFont('Helvetica', 'normal');
           doc.text(year, pageWidth - margin, y, { align: 'right' });
-          y += 13;
+          y += 12;
         }
-
         doc.save('Sooraj_Krishnan_VS_Resume.pdf');
         addLog('AUDIT_LOG', 'CV PDF Download Completed', 'Sooraj_Krishnan_VS_Resume.pdf');
       } catch (err) {

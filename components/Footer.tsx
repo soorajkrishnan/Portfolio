@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { ArrowUp, Terminal, Activity, Sparkles, Heart } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
-export default function Footer({ onOpenTerminal }: { onOpenTerminal: () => void }) {
+export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -21,7 +21,7 @@ export default function Footer({ onOpenTerminal }: { onOpenTerminal: () => void 
           </p>
         </div>
 
-        {/* Center Live System Status & Easter Egg Trigger */}
+        {/* Center Live System Status */}
         <div className="flex flex-col items-center space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-[#1A1F2E] border border-emerald-300 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-[11px]">
             <span className="flex h-2 w-2 relative">
@@ -30,14 +30,6 @@ export default function Footer({ onOpenTerminal }: { onOpenTerminal: () => void 
             </span>
             <span>Live Telemetry Active</span>
           </div>
-
-          <button
-            onClick={onOpenTerminal}
-            className="text-[11px] text-[#B3822A] dark:text-[#D4A853] hover:underline flex items-center space-x-1"
-          >
-            <Terminal className="w-3.5 h-3.5" />
-            <span>&quot;In God we trust. All others must bring data.&quot; — Press Ctrl+K</span>
-          </button>
         </div>
 
         {/* Right Back to Top */}

@@ -10,10 +10,6 @@ import {
   Cpu,
   Brain,
   Terminal,
-  ExternalLink,
-  CheckCircle,
-  Sparkles,
-  ShieldCheck,
   Check
 } from 'lucide-react';
 

@@ -5,18 +5,15 @@ import Navbar from '@/components/Navbar';
 import DataStreamHero from '@/components/DataStreamHero';
 import StatsBar from '@/components/StatsBar';
 import JourneyWalkthrough from '@/components/JourneyWalkthrough';
-import SelectedProjects from '@/components/SelectedProjects';
 import PipelineCaseStudies from '@/components/PipelineCaseStudies';
 import SkillsAndCertifications from '@/components/SkillsAndCertifications';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import KqlTerminalModal from '@/components/KqlTerminalModal';
 import ResumeModal from '@/components/ResumeModal';
 import { SystemLogProvider } from '@/context/SystemLogContext';
 
 export default function Home() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [terminalOpen, setTerminalOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
@@ -47,7 +44,6 @@ export default function Home() {
         <Navbar
           theme={theme}
           onToggleTheme={toggleTheme}
-          onOpenTerminal={() => setTerminalOpen(true)}
           onOpenResume={() => setResumeOpen(true)}
         />
 
@@ -55,7 +51,6 @@ export default function Home() {
         <main className="relative z-10">
           {/* Interactive WebGL Hero Canvas */}
           <DataStreamHero
-            onOpenTerminal={() => setTerminalOpen(true)}
             onWalkJourney={scrollToJourney}
             onOpenResume={() => setResumeOpen(true)}
           />
@@ -69,9 +64,6 @@ export default function Home() {
           {/* Detailed Pipeline Case Studies */}
           <PipelineCaseStudies />
 
-          {/* Featured Pipeline Case Studies & Architectural Projects */}
-          <SelectedProjects onOpenTerminal={() => setTerminalOpen(true)} />
-
           {/* Technical Capability Inventory & Verified Certifications */}
           <SkillsAndCertifications />
 
@@ -80,13 +72,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <Footer onOpenTerminal={() => setTerminalOpen(true)} />
-
-        {/* Interactive KQL/SQL Terminal Easter Egg Modal */}
-        <KqlTerminalModal
-          isOpen={terminalOpen}
-          onClose={() => setTerminalOpen(false)}
-        />
+        <Footer />
 
         {/* View / Print Full Resume Modal */}
         <ResumeModal

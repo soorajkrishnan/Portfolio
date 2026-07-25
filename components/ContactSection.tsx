@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, Linkedin, Send, Copy, Check, Sparkles, Database, Terminal, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, Linkedin, Send, Copy, Check, Terminal } from 'lucide-react';
 import { useSystemLog } from '@/context/SystemLogContext';
 
 export default function ContactSection() {

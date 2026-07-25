@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Terminal,
   Sun,
   Moon,
   Menu,
@@ -15,14 +14,12 @@ import { useSystemLog } from '@/context/SystemLogContext';
 interface NavbarProps {
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
-  onOpenTerminal: () => void;
   onOpenResume: () => void;
 }
 
 export default function Navbar({
   theme,
   onToggleTheme,
-  onOpenTerminal,
   onOpenResume,
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -39,10 +36,8 @@ export default function Navbar({
 
   const navLinks = [
     { label: 'JOURNEY', href: '#journey' },
-    { label: 'PIPELINES', href: '#pipelines' },
-    { label: 'INTERACTIVE LABS', href: '#playgrounds' },
-    { label: 'SKILLS', href: '#skills' },
-    { label: 'CERTIFICATIONS', href: '#certifications' },
+    { label: 'CASE STUDIES', href: '#pipelines' },
+    { label: 'SKILLS & CERTIFICATIONS', href: '#skills' },
     { label: 'CONTACT', href: '#contact' },
   ];
 
@@ -84,22 +79,8 @@ export default function Navbar({
           ))}
         </nav>
 
-        {/* Action Controls (Terminal, Dark Mode, Resume, Contact) */}
+        {/* Action Controls (Dark Mode, Resume) */}
         <div className="hidden sm:flex items-center space-x-3">
-          {/* KQL Terminal Trigger Button */}
-          <button
-            onClick={() => {
-              addLog('KQL_EXEC', 'Interactive KQL Terminal Triggered', 'Shortcut Ctrl+K active');
-              onOpenTerminal();
-            }}
-            title="Open Interactive KQL Terminal (Ctrl+K)"
-            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-[#2D3447] dark:hover:bg-[#D4A853]/20 border border-gray-300 dark:border-[#D4A853]/40 text-[#B3822A] dark:text-[#D4A853] transition-all flex items-center space-x-1.5 text-xs font-mono shadow"
-          >
-            <Terminal className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
-            <span className="font-bold">KQL CLI</span>
-            <span className="text-[10px] bg-black/10 dark:bg-black/40 px-1 py-0.5 rounded text-gray-600 dark:text-gray-400">Ctrl+K</span>
-          </button>
-
           {/* Theme Toggle */}
           <button
             onClick={() => {
@@ -127,13 +108,6 @@ export default function Navbar({
 
         {/* Mobile Menu Trigger */}
         <div className="flex items-center space-x-2 lg:hidden">
-          <button
-            onClick={onOpenTerminal}
-            className="p-2 rounded-lg bg-[#2D3447] text-[#D4A853] border border-[#D4A853]/30"
-          >
-            <Terminal className="w-4 h-4" />
-          </button>
-
           <button
             onClick={onToggleTheme}
             className="p-2 rounded-lg bg-[#2D3447] text-[#E8C878]"
@@ -171,17 +145,6 @@ export default function Navbar({
             ))}
 
             <div className="pt-2 flex flex-col space-y-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenTerminal();
-                }}
-                className="w-full py-2.5 bg-[#2D3447] text-[#D4A853] font-bold rounded-lg flex items-center justify-center space-x-2 border border-[#D4A853]/40"
-              >
-                <Terminal className="w-4 h-4" />
-                <span>Launch Interactive KQL Terminal</span>
-              </button>
-
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

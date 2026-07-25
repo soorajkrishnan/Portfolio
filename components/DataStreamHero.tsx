@@ -1,25 +1,19 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Play, Terminal, ArrowDown, Activity, Sparkles, Layers, FileDown, ShieldCheck, Cpu } from 'lucide-react';
-import { useSystemLog } from '@/context/SystemLogContext';
+import { Sparkles, FileDown } from 'lucide-react';
 
 interface DataStreamHeroProps {
-  onOpenTerminal: () => void;
   onWalkJourney: () => void;
   onOpenResume: () => void;
 }
 
 export default function DataStreamHero({
-  onOpenTerminal,
   onWalkJourney,
   onOpenResume,
 }: DataStreamHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [streamMode, setStreamMode] = useState<'medallion' | 'high_throughput' | 'sine_wave'>('medallion');
-  const [throughput, setThroughput] = useState(2400000); // 2.4M msg/s
-  const { addLog } = useSystemLog();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -115,7 +109,7 @@ export default function DataStreamHero({
         const p = particles[i];
 
         // Move horizontally
-        p.x += p.vx * (streamMode === 'high_throughput' ? 1.8 : 1);
+        p.x += p.vx;
         if (p.x > width) {
           p.x = -10;
           p.baseY = Math.random() * height;
@@ -190,18 +184,12 @@ export default function DataStreamHero({
 
     render();
 
-    // Fluctuating throughput timer for live data feel
-    const throughputInterval = setInterval(() => {
-      setThroughput(2400000 + Math.floor((Math.random() - 0.5) * 80000));
-    }, 1500);
-
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
-      clearInterval(throughputInterval);
     };
-  }, [streamMode]);
+  }, []);
 
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-16 bg-[#F8F6F0] dark:bg-[#1A1F2E] transition-colors duration-300">
@@ -250,15 +238,6 @@ export default function DataStreamHero({
           >
             <Sparkles className="w-4 h-4 text-[#1A1F2E] group-hover:rotate-12 transition-transform" />
             <span>Walk Sooraj&apos;s Journey</span>
-          </button>
-
-          <button
-            onClick={onOpenTerminal}
-            className="px-6 py-3.5 rounded-full bg-white dark:bg-[#2D3447]/90 hover:bg-gray-100 dark:hover:bg-[#2D3447] text-[#1A1F2E] dark:text-[#F5F0E8] border border-gray-300 dark:border-[#D4A853]/40 hover:border-[#B3822A] dark:hover:border-[#D4A853] font-mono text-sm sm:text-base shadow-md hover:scale-105 transition-all duration-300 flex items-center space-x-2"
-          >
-            <Terminal className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
-            <span>Launch KQL Shell</span>
-            <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-black/10 dark:bg-black/40 text-gray-600 dark:text-gray-400 rounded">Ctrl+K</span>
           </button>
 
           <button

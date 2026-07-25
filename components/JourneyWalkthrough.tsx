@@ -3,42 +3,23 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
-  GraduationCap,
-  Briefcase,
+  Calendar,
+  Building2,
+  CheckCircle2,
+  Sparkles,
   Layers,
+  Filter,
   Zap,
   FileCode,
   Search,
   BrainCircuit,
-  CheckCircle2,
-  Sparkles,
-  Terminal,
-  Code2,
-  Database,
-  Cpu,
-  Server,
-  Globe
+  Briefcase,
+  GraduationCap,
 } from 'lucide-react';
 import { useSystemLog } from '@/context/SystemLogContext';
 
 export default function JourneyWalkthrough() {
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'cloud' | 'ai' | 'ml' | 'education'>('all');
-
-  // Interactive Live Simulators state inside journey milestones
-  const [kqlQueryText, setKqlQueryText] = useState('SystemHealthTelemetry | summarize AvgLatency = avg(LatencyMs) by bin(Timestamp, 1m)');
-  const [kqlExecuted, setKqlExecuted] = useState(false);
-
-  const [fastApiSchema, setFastApiSchema] = useState('user_telemetry_logs');
-  const [fastApiGenerated, setFastApiGenerated] = useState(false);
-
-  const [parsingPdf, setParsingPdf] = useState(false);
-  const [parsedConfidence, setParsedConfidence] = useState<number | null>(null);
-
-  const [ingestPdfParsing, setIngestPdfParsing] = useState(false);
-  const [ingestPdfDone, setIngestPdfDone] = useState(false);
-
-  const [topicClusterActive, setTopicClusterActive] = useState<number>(0);
-
   const { addLog } = useSystemLog();
 
   // Milestone data in strict DESCENDING order (2026 PRESENT down to 2016)
@@ -312,341 +293,46 @@ export default function JourneyWalkthrough() {
                       </span>
                     </div>
 
-                    {/* Main Card Grid: 7 cols details, 5 cols interactive simulator */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
-                      {/* Left Column (7 cols): Content & Key Deliverables */}
-                      <div className="lg:col-span-7 space-y-4">
-                        <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
-                          {step.title}
-                        </h3>
+                    {/* Main Card Content */}
+                    <div className="space-y-4 mt-6">
+                      <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
+                        {step.title}
+                      </h3>
 
-                        <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-display font-medium leading-relaxed bg-amber-500/10 dark:bg-[#1A1F2E]/60 p-3.5 rounded-xl border-l-4 border-[#B3822A] dark:border-[#D4A853]">
-                          &ldquo;{step.shortDesc}&rdquo;
-                        </p>
+                      <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-display font-medium leading-relaxed bg-amber-500/10 dark:bg-[#1A1F2E]/60 p-3.5 rounded-xl border-l-4 border-[#B3822A] dark:border-[#D4A853]">
+                        &ldquo;{step.shortDesc}&rdquo;
+                      </p>
 
-                        <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-body leading-relaxed">
-                          {step.detail}
-                        </p>
+                      <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-body leading-relaxed">
+                        {step.detail}
+                      </p>
 
-                        {/* Deliverables */}
-                        <div>
-                          <h4 className="font-mono text-xs text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider font-bold mb-2 flex items-center">
-                            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-500 dark:text-amber-400" />
-                            Key Outcomes &amp; Accomplishments:
-                          </h4>
-                          <ul className="space-y-2">
-                            {step.highlights.map((item, hIdx) => (
-                              <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-700 dark:text-gray-300">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Tech Stack */}
-                        <div className="pt-2 flex flex-wrap gap-1.5">
-                          {step.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="px-2.5 py-1 rounded-lg bg-[#1A1F2E] border border-gray-800 text-[11px] font-mono text-[#D4A853]"
-                            >
-                              {t}
-                            </span>
+                      {/* Deliverables */}
+                      <div>
+                        <h4 className="font-mono text-xs text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider font-bold mb-2 flex items-center">
+                          <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-500 dark:text-amber-400" />
+                          Key Outcomes &amp; Accomplishments:
+                        </h4>
+                        <ul className="space-y-2">
+                          {step.highlights.map((item, hIdx) => (
+                            <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-700 dark:text-gray-300">
+                              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
 
-                      {/* Right Column (5 cols): Embedded Live Demonstration Studio */}
-                      <div className="lg:col-span-5 bg-[#141824] border border-gray-800 rounded-2xl p-5 flex flex-col justify-between shadow-inner">
-                        {/* Simulator 1: ADX & KQL Telemetry Engine (2026) */}
-                        {step.hasKqlSim && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                              <span className="font-mono text-xs font-bold text-[#D4A853] flex items-center">
-                                <Terminal className="w-4 h-4 mr-1.5 text-amber-400" />
-                                ADX KQL Telemetry Engine
-                              </span>
-                              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                                LIVE KQL
-                              </span>
-                            </div>
-
-                            <p className="text-xs text-gray-300 font-mono">
-                              Execute KQL query on Azure Data Explorer Gold layer:
-                            </p>
-
-                            <div className="bg-[#0B0E14] p-3 rounded-xl border border-gray-800 font-mono text-xs">
-                              <textarea
-                                value={kqlQueryText}
-                                onChange={(e) => setKqlQueryText(e.target.value)}
-                                className="w-full bg-transparent text-emerald-300 outline-none resize-none font-mono text-xs h-16"
-                              />
-                            </div>
-
-                            <button
-                              onClick={() => {
-                                setKqlExecuted(true);
-                                addLog('KQL_EXEC', 'KQL Query Executed in Journey Simulator', kqlQueryText);
-                              }}
-                              className="w-full py-2 bg-[#D4A853] hover:bg-[#E8C878] text-[#1A1F2E] font-mono font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow"
-                            >
-                              <Terminal className="w-4 h-4" />
-                              <span>Run KQL Query on ADX Gold Layer</span>
-                            </button>
-
-                            {kqlExecuted && (
-                              <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="p-3 bg-[#0B0E14] rounded-xl border border-emerald-500/40 text-[11px] font-mono text-emerald-300 space-y-1.5"
-                              >
-                                <p className="font-bold text-emerald-400">⚡ 200 OK — Query Executed in 14ms</p>
-                                <div className="grid grid-cols-2 gap-2 text-[10px] text-gray-300">
-                                  <div className="bg-[#1A1F2E] p-1.5 rounded">
-                                    <span className="text-gray-400 block">AvgLatency:</span>
-                                    <strong className="text-amber-300">12.4ms</strong>
-                                  </div>
-                                  <div className="bg-[#1A1F2E] p-1.5 rounded">
-                                    <span className="text-gray-400 block">Status:</span>
-                                    <strong className="text-amber-300">Materialized Active</strong>
-                                  </div>
-                                </div>
-                              </motion.div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Simulator 2: Dynamic FastAPI Generator (2025) */}
-                        {step.hasFastApiSim && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                              <span className="font-mono text-xs font-bold text-emerald-400 flex items-center">
-                                <Zap className="w-4 h-4 mr-1.5" />
-                                Dynamic FastAPI Generator
-                              </span>
-                              <span className="text-[10px] font-mono text-emerald-400">60% Dev Cut</span>
-                            </div>
-
-                            <p className="text-xs text-gray-300 font-mono">
-                              Select database table schema to auto-generate REST endpoint:
-                            </p>
-
-                            <select
-                              value={fastApiSchema}
-                              onChange={(e) => {
-                                setFastApiSchema(e.target.value);
-                                setFastApiGenerated(false);
-                              }}
-                              className="w-full bg-[#0B0E14] border border-gray-700 text-xs font-mono text-[#D4A853] p-2.5 rounded-xl outline-none focus:border-[#D4A853]"
-                            >
-                              <option value="user_telemetry_logs">Table: user_telemetry_logs</option>
-                              <option value="enterprise_orders">Table: enterprise_orders</option>
-                              <option value="iot_sensor_readings">Table: iot_sensor_readings</option>
-                            </select>
-
-                            <button
-                              onClick={() => setFastApiGenerated(true)}
-                              className="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow"
-                            >
-                              <Code2 className="w-4 h-4" />
-                              <span>Generate OpenAPI Route</span>
-                            </button>
-
-                            {fastApiGenerated && (
-                              <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="p-3 bg-[#0B0E14] rounded-xl border border-emerald-500/40 text-[11px] font-mono text-emerald-300 space-y-1"
-                              >
-                                <p className="font-bold text-emerald-400">✅ Route Created in 2 milliseconds!</p>
-                                <p className="text-gray-300">Endpoint: <span className="text-amber-300">GET /api/v1/{fastApiSchema}</span></p>
-                                <p className="text-gray-400 text-[10px]">Pydantic schema validated • Swagger docs built</p>
-                              </motion.div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Simulator 3: AWS Document Parser Simulator (2024) */}
-                        {step.hasAwsParserSim && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                              <span className="font-mono text-xs font-bold text-purple-400 flex items-center">
-                                <FileCode className="w-4 h-4 mr-1.5" />
-                                AWS Step Functions + Textract
-                              </span>
-                              <span className="text-[10px] font-mono text-[#D4A853]">80%+ Precision</span>
-                            </div>
-
-                            <p className="text-xs text-gray-300 font-mono">
-                              Simulate serverless OCR extraction on multi-page PDF:
-                            </p>
-
-                            <div className="p-3 bg-[#0B0E14] border border-dashed border-gray-700 rounded-xl text-center">
-                              <p className="text-xs text-gray-300 font-mono">Input PDF: <span className="text-amber-300 font-bold">Stakeholder_Document.pdf</span></p>
-                            </div>
-
-                            <button
-                              onClick={() => {
-                                setParsingPdf(true);
-                                setParsedConfidence(null);
-                                setTimeout(() => {
-                                  setParsingPdf(false);
-                                  setParsedConfidence(88.6);
-                                }, 800);
-                              }}
-                              disabled={parsingPdf}
-                              className="w-full py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-mono font-bold text-xs rounded-xl transition flex items-center justify-center space-x-2 shadow"
-                            >
-                              {parsingPdf ? (
-                                <span>Running Step Functions State Machine...</span>
-                              ) : (
-                                <>
-                                  <BrainCircuit className="w-4 h-4" />
-                                  <span>Run Textract &amp; Comprehend Pipeline</span>
-                                </>
-                              )}
-                            </button>
-
-                            {parsedConfidence && (
-                              <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="p-3 bg-[#0B0E14] border border-purple-500/40 rounded-xl text-[11px] font-mono text-purple-200 space-y-1"
-                              >
-                                <p className="text-purple-300 font-bold">🎯 Precision: {parsedConfidence}%</p>
-                                <p className="text-gray-300">Extracted: 22 Key-Value Pairs, 4 Tables</p>
-                                <p className="text-emerald-400">AWS A2I Human Loop: Passed</p>
-                              </motion.div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Simulator 4: Ingestion Engine (2023) */}
-                        {step.hasIngestSim && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                              <span className="font-mono text-xs font-bold text-cyan-400 flex items-center">
-                                <Search className="w-4 h-4 mr-1.5" />
-                                pdfplumber &amp; BeautifulSoup
-                              </span>
-                              <span className="text-[10px] font-mono text-cyan-300">PostgreSQL Full-Text</span>
-                            </div>
-
-                            <p className="text-xs text-gray-300 font-mono">
-                              Simulate web &amp; PDF document stream ingestion:
-                            </p>
-
-                            <button
-                              onClick={() => {
-                                setIngestPdfParsing(true);
-                                setIngestPdfDone(false);
-                                setTimeout(() => {
-                                  setIngestPdfParsing(false);
-                                  setIngestPdfDone(true);
-                                }, 700);
-                              }}
-                              disabled={ingestPdfParsing}
-                              className="w-full py-2 bg-cyan-700 hover:bg-cyan-600 disabled:opacity-50 text-white font-mono font-bold text-xs rounded-xl transition flex items-center justify-center space-x-2 shadow"
-                            >
-                              {ingestPdfParsing ? (
-                                <span>Ingesting web pages &amp; PDFs...</span>
-                              ) : (
-                                <>
-                                  <Globe className="w-4 h-4" />
-                                  <span>Parse Document &amp; Stream to Postgres</span>
-                                </>
-                              )}
-                            </button>
-
-                            {ingestPdfDone && (
-                              <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="p-3 bg-[#0B0E14] border border-cyan-500/40 rounded-xl text-[11px] font-mono text-cyan-200 space-y-1"
-                              >
-                                <p className="text-cyan-300 font-bold">⚡ Ingest Complete (&lt;50ms Query Latency)</p>
-                                <p className="text-gray-300">Structured tables indexed into PostgreSQL</p>
-                                <p className="text-emerald-400">Full-Text GIN Index Updated</p>
-                              </motion.div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Simulator 5: Topic Modeling Simulator (2022) */}
-                        {step.hasTopicSim && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                              <span className="font-mono text-xs font-bold text-rose-400 flex items-center">
-                                <BrainCircuit className="w-4 h-4 mr-1.5" />
-                                Gensim LDA Topic Clusters
-                              </span>
-                              <span className="text-[10px] font-mono text-rose-400">Unsupervised ML</span>
-                            </div>
-
-                            <p className="text-xs text-gray-300 font-mono">
-                              Click semantic clusters to inspect LDA topics:
-                            </p>
-
-                            <div className="grid grid-cols-3 gap-2 font-mono text-xs">
-                              {[
-                                { name: 'Topic 1: Telemetry', terms: 'latency, adx, stream, cdc' },
-                                { name: 'Topic 2: Document AI', terms: 'textract, pdf, ocr, step' },
-                                { name: 'Topic 3: API Framework', terms: 'fastapi, pydantic, route' },
-                              ].map((t, tIdx) => (
-                                <button
-                                  key={tIdx}
-                                  onClick={() => setTopicClusterActive(tIdx)}
-                                  className={`p-2 rounded-xl text-left border transition ${
-                                    topicClusterActive === tIdx
-                                      ? 'bg-rose-950/60 border-rose-500 text-rose-200'
-                                      : 'bg-[#0B0E14] border-gray-800 text-gray-400 hover:text-white'
-                                  }`}
-                                >
-                                  <span className="font-bold block text-[10px]">{t.name}</span>
-                                </button>
-                              ))}
-                            </div>
-
-                            <div className="p-3 bg-[#0B0E14] rounded-xl border border-rose-500/30 text-[11px] font-mono text-rose-300">
-                              <span className="text-gray-400 block text-[10px]">SpaCy Lemmatized Keywords:</span>
-                              <strong className="text-amber-300">
-                                {topicClusterActive === 0 && 'latency (0.34) • adx (0.28) • stream (0.21) • cdc (0.17)'}
-                                {topicClusterActive === 1 && 'textract (0.42) • pdf (0.31) • ocr (0.18) • step (0.09)'}
-                                {topicClusterActive === 2 && 'fastapi (0.38) • pydantic (0.33) • route (0.19) • schema (0.10)'}
-                              </strong>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Career / Education Graphic Cards */}
-                        {step.isCareerCard && (
-                          <div className="flex flex-col items-center justify-center h-full p-4 text-center space-y-3">
-                            <div className="w-12 h-12 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-lg">
-                              <Briefcase className="w-6 h-6" />
-                            </div>
-                            <p className="font-display font-bold text-base text-[#F5F0E8]">
-                              TCS Cloud Engineering
-                            </p>
-                            <p className="font-mono text-xs text-gray-400 max-w-xs">
-                              Architecting enterprise-scale data infrastructure across Azure and AWS.
-                            </p>
-                          </div>
-                        )}
-
-                        {step.isEduCard && (
-                          <div className="flex flex-col items-center justify-center h-full p-4 text-center space-y-3">
-                            <div className="w-12 h-12 rounded-2xl bg-blue-950/80 border border-blue-500/40 flex items-center justify-center text-blue-400 shadow-lg">
-                              <GraduationCap className="w-6 h-6" />
-                            </div>
-                            <p className="font-display font-bold text-base text-[#F5F0E8]">
-                              Academic Distinction
-                            </p>
-                            <p className="font-mono text-xs text-gray-400 max-w-xs">
-                              Honors in Computer Science • Core Foundations in Distributed Systems &amp; Relational SQL.
-                            </p>
-                          </div>
-                        )}
+                      {/* Tech Stack */}
+                      <div className="pt-2 flex flex-wrap gap-1.5">
+                        {step.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-2.5 py-1 rounded-lg bg-[#1A1F2E] border border-gray-800 text-[11px] font-mono text-[#D4A853]"
+                          >
+                            {t}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
