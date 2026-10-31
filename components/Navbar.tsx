@@ -34,72 +34,76 @@ export default function Navbar({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Pass 4: Copy — sentence case, shorter labels
   const navLinks = [
-    { label: 'JOURNEY', href: '#journey' },
-    { label: 'CASE STUDIES', href: '#pipelines' },
-    { label: 'SKILLS & CERTIFICATIONS', href: '#skills' },
-    { label: 'CONTACT', href: '#contact' },
+    { label: 'Journey', href: '#journey' },
+    { label: 'Case studies', href: '#pipelines' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-40 transition-colors duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-[#1A1F2E]/90 backdrop-blur-xl border-b border-gray-200 dark:border-[#D4A853]/20 shadow-xl py-3'
+          ? 'bg-white/90 dark:bg-[#1A1F2E]/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 py-3'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center space-x-2.5 group">
-          <div className="p-2 rounded-xl bg-[#F1ECE3] dark:bg-[#0F1419] border border-gray-300 dark:border-[#D4A853]/40 text-[#B3822A] dark:text-[#D4A853] font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
+        {/* Brand — Pass 7: flat logo mark, no hover scale */}
+        <a href="#" className="flex items-center space-x-2.5">
+          <div className="p-2 rounded-lg bg-[#F1ECE3] dark:bg-[#0F1419] border border-gray-300 dark:border-gray-700 text-[#B3822A] dark:text-[#D4A853] font-mono font-bold text-sm">
             {`{ SK }`}
           </div>
           <div>
-            <span className="font-display font-extrabold text-base sm:text-lg text-[#1A1F2E] dark:text-[#F5F0E8] tracking-wider block">
-              SOORAJ KRISHNAN V S
+            {/* Pass 5: sentence case, font-semibold not extrabold */}
+            <span className="font-display font-semibold text-base sm:text-lg text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight block">
+              Sooraj Krishnan V S
             </span>
-            <span className="font-mono text-[10px] text-[#B3822A] dark:text-[#D4A853] uppercase tracking-widest block -mt-1 font-semibold">
+            <span className="font-mono text-[10px] text-[#B3822A] dark:text-[#D4A853] block -mt-0.5">
               Cloud Data Engineer
             </span>
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6 text-xs font-mono tracking-wider font-semibold">
+        {/* Desktop Navigation — Pass 5: sentence case, Pass 7: cursor-caret signature */}
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-mono">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => addLog('DATA_ACTION', `Navigated to section: #${link.label}`)}
-              className="text-[#1A1F2E] dark:text-[#F5F0E8] hover:text-[#B3822A] dark:hover:text-[#D4A853] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#B3822A] dark:after:bg-[#D4A853] hover:after:w-full after:transition-all"
+              className="group text-[#1A1F2E] dark:text-[#94A3B8] hover:text-[#B3822A] dark:hover:text-[#D4A853] transition-colors relative py-1"
             >
               {link.label}
+              {/* Signature: terminal caret on hover — only this product would have it */}
+              <span className="opacity-0 group-hover:opacity-100 text-[#B3822A] dark:text-[#D4A853] terminal-cursor ml-0.5">
+                |
+              </span>
             </a>
           ))}
         </nav>
 
-        {/* Action Controls (Dark Mode, Resume) */}
+        {/* Action Controls — Pass 9: no scale, transition-colors */}
         <div className="hidden sm:flex items-center space-x-3">
-          {/* Theme Toggle */}
           <button
             onClick={() => {
               addLog('INFO', `Theme updated to ${theme === 'dark' ? 'Light' : 'Dark'} mode`);
               onToggleTheme();
             }}
-            title="Toggle Dark / Light Theme"
-            className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-[#2D3447] dark:hover:bg-gray-700 text-amber-600 dark:text-[#E8C878] border border-gray-300 dark:border-gray-700 transition-all shadow"
+            title="Toggle theme"
+            className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-[#2D3447] dark:hover:bg-[#374158] border border-gray-300 dark:border-gray-700 transition-colors"
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-sky-600" />}
+            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-[#B3822A]" />}
           </button>
 
-          {/* Resume Trigger */}
           <button
             onClick={() => {
               addLog('AUDIT_LOG', 'Resume Document Inspection Requested', 'Candidate: Sooraj Krishnan V S');
               onOpenResume();
             }}
-            className="px-4 py-2 rounded-xl bg-[#D4A853] hover:bg-[#E8C878] text-[#1A1F2E] font-mono font-bold text-xs shadow transition-all hover:scale-105 flex items-center space-x-1.5"
+            className="px-4 py-2 rounded-lg bg-[#D4A853] hover:bg-[#C89940] text-[#1A1F2E] font-mono font-medium text-xs transition-colors flex items-center space-x-1.5"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>
@@ -110,50 +114,51 @@ export default function Navbar({
         <div className="flex items-center space-x-2 lg:hidden">
           <button
             onClick={onToggleTheme}
-            className="p-2 rounded-lg bg-[#2D3447] text-[#E8C878]"
+            className="p-2 rounded-lg bg-[#2D3447] text-[#E8C878] transition-colors"
           >
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-[#2D3447] text-[#F5F0E8] border border-gray-700"
+            className="p-2 rounded-lg bg-[#2D3447] text-[#F5F0E8] border border-gray-700 transition-colors"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white dark:bg-[#0F1419] border-b border-gray-200 dark:border-[#D4A853]/30 px-4 pt-3 pb-6 font-mono text-sm space-y-3 shadow-xl"
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white dark:bg-[#0F1419] border-b border-gray-200 dark:border-gray-800 px-4 pt-3 pb-6 font-mono text-sm space-y-1"
           >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-[#1A1F2E] dark:text-[#F5F0E8] hover:text-[#B3822A] dark:hover:text-[#D4A853] py-2 border-b border-gray-200 dark:border-gray-800"
+                className="block text-[#1A1F2E] dark:text-[#94A3B8] hover:text-[#B3822A] dark:hover:text-[#D4A853] py-2 border-b border-gray-100 dark:border-gray-800 transition-colors"
               >
                 {link.label}
               </a>
             ))}
 
-            <div className="pt-2 flex flex-col space-y-2">
+            <div className="pt-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenResume();
                 }}
-                className="w-full py-2.5 bg-[#D4A853] text-[#1A1F2E] font-bold rounded-lg flex items-center justify-center space-x-2"
+                className="w-full py-2.5 bg-[#D4A853] hover:bg-[#C89940] text-[#1A1F2E] font-medium rounded-lg flex items-center justify-center space-x-2 transition-colors"
               >
                 <FileText className="w-4 h-4" />
-                <span>View &amp; Download Resume</span>
+                <span>View resume</span>
               </button>
             </div>
           </motion.div>

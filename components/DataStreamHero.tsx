@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, FileDown } from 'lucide-react';
+import { ArrowDown, FileDown } from 'lucide-react';
 
 interface DataStreamHeroProps {
   onWalkJourney: () => void;
@@ -193,82 +193,79 @@ export default function DataStreamHero({
 
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-16 bg-[#F8F6F0] dark:bg-[#1A1F2E] transition-colors duration-300">
-      {/* WebGL / Canvas Data Stream Background */}
+      {/* Canvas Data Stream Background — the hero moment */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-auto z-0"
         aria-hidden="true"
       />
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 data-grid-pattern dark:data-grid-pattern opacity-40 pointer-events-none z-0" />
-
       {/* Main Content Overlay */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Hero Title */}
+        {/* Pass 5: font-bold not extrabold, sentence case */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight leading-[1.05] max-w-5xl"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-display font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight leading-[1.05] max-w-5xl"
         >
-          Architecting <span className="text-[#B3822A] dark:text-[#D4A853] underline decoration-[#B3822A]/40 dark:decoration-[#D4A853]/30 decoration-wavy">Data Pipelines</span> That Scale
+          Architecting{' '}
+          <span className="text-[#B3822A] dark:text-[#D4A853] underline decoration-[#B3822A]/40 dark:decoration-[#D4A853]/30 decoration-wavy">
+            data pipelines
+          </span>{' '}
+          that scale
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-6 text-base sm:text-xl text-gray-700 dark:text-[#94A3B8] max-w-3xl font-body leading-relaxed font-normal"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-6 text-base sm:text-xl text-gray-600 dark:text-[#94A3B8] max-w-3xl font-body leading-relaxed font-normal"
         >
-          Hi, I&apos;m <strong className="text-[#1A1F2E] dark:text-[#F5F0E8] font-semibold">Sooraj Krishnan V S</strong>. 4+ years building high-throughput ETL/ELT pipelines, Medallion Lakehouses with Azure Event Hubs &amp; ADX, automated FastAPI generators, and AWS AI document parsing platforms.
+          Hi, I&apos;m{' '}
+          <strong className="text-[#1A1F2E] dark:text-[#F5F0E8] font-medium">
+            Sooraj Krishnan V S
+          </strong>{' '}
+          — 4 years building high-throughput ETL/ELT pipelines, Medallion Lakehouses with Azure Event Hubs &amp; ADX, automated FastAPI generators, and AWS AI document parsing platforms.
         </motion.p>
 
-        {/* Primary CTA Buttons */}
+        {/* Pass 9: no scale, transition-colors. Pass 3: no Sparkles, ArrowDown instead */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-8 flex flex-wrap justify-center items-center gap-4"
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-8 flex flex-wrap justify-center items-center gap-3"
         >
           <button
             onClick={onWalkJourney}
-            className="px-6 py-3.5 rounded-full bg-[#D4A853] hover:bg-[#E8C878] text-[#1A1F2E] font-display font-bold text-sm sm:text-base shadow-lg shadow-[#D4A853]/20 hover:scale-105 transition-all duration-300 flex items-center space-x-2 group"
+            className="px-6 py-3 rounded-lg bg-[#D4A853] hover:bg-[#C89940] text-[#1A1F2E] font-display font-medium text-sm sm:text-base transition-colors flex items-center space-x-2"
           >
-            <Sparkles className="w-4 h-4 text-[#1A1F2E] group-hover:rotate-12 transition-transform" />
-            <span>Walk Sooraj&apos;s Journey</span>
+            <ArrowDown className="w-4 h-4" />
+            <span>View journey</span>
           </button>
 
           <button
             onClick={onOpenResume}
-            className="px-5 py-3.5 rounded-full bg-transparent border border-gray-400 dark:border-gray-600 hover:border-[#B3822A] dark:hover:border-[#D4A853] text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-display text-sm sm:text-base transition-all duration-300 flex items-center space-x-2"
+            className="px-5 py-3 rounded-lg bg-transparent border border-gray-400 dark:border-gray-600 hover:border-[#B3822A] dark:hover:border-[#D4A853] text-gray-600 dark:text-gray-300 hover:text-[#B3822A] dark:hover:text-[#D4A853] font-display text-sm sm:text-base transition-colors flex items-center space-x-2"
           >
-            <FileDown className="w-4 h-4 text-[#B3822A] dark:text-[#D4A853]" />
-            <span>View Resume</span>
+            <FileDown className="w-4 h-4" />
+            <span>View resume</span>
           </button>
         </motion.div>
 
-
-
-        {/* Scroll Indicator */}
+        {/* Scroll indicator — Pass 9: static, no looping bounce */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="mt-12 flex flex-col items-center space-y-2 cursor-pointer group"
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="mt-16 flex flex-col items-center space-y-2 cursor-pointer group"
           onClick={onWalkJourney}
         >
-          <span className="text-[11px] font-mono text-[#8A93A8] uppercase tracking-widest group-hover:text-[#D4A853] transition-colors">
-            Scroll to Walk Path
+          <span className="text-[11px] font-mono text-[#8A93A8] group-hover:text-[#D4A853] transition-colors">
+            scroll
           </span>
-          <div className="w-5 h-9 rounded-full border-2 border-gray-600 group-hover:border-[#D4A853] flex justify-center p-1 transition-colors">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 rounded-full bg-[#D4A853]"
-            />
-          </div>
+          <div className="w-px h-8 bg-gray-400 dark:bg-gray-600 group-hover:bg-[#D4A853] transition-colors" />
         </motion.div>
       </div>
     </section>

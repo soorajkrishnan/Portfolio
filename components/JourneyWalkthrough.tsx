@@ -6,7 +6,6 @@ import {
   Calendar,
   Building2,
   CheckCircle2,
-  Sparkles,
   Layers,
   Filter,
   Zap,
@@ -23,6 +22,7 @@ export default function JourneyWalkthrough() {
   const { addLog } = useSystemLog();
 
   // Milestone data in strict DESCENDING order (2026 PRESENT down to 2016)
+  // Pass 3: all icon colors normalized to amber role
   const steps = [
     {
       id: 'medallion_adx_2026',
@@ -33,8 +33,8 @@ export default function JourneyWalkthrough() {
       institution: 'Tata Consultancy Services & Industry Credentials',
       category: 'cloud',
       type: 'milestone',
-      badge: 'Real-Time Streaming & KQL Analytics',
-      icon: <Layers className="w-5 h-5 text-amber-400" />,
+      badge: 'Real-time streaming & KQL analytics',
+      icon: <Layers className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Engineered sub-second telemetry ingestion with Azure Event Hubs, Debezium CDC, and ADX Materialized Views. Earned Databricks & AWS certifications.',
       detail: 'Architected an end-to-end Medallion Lakehouse (Bronze ingestion, Silver cleansing, Gold materialized aggregations) in Azure Data Explorer. Captured database change logs via Debezium CDC into Event Hubs with sub-second Grafana monitoring.',
       highlights: [
@@ -44,7 +44,6 @@ export default function JourneyWalkthrough() {
         'Microsoft Certified: Azure AI Fundamentals (2024)',
       ],
       tech: ['Azure Data Explorer (ADX)', 'KQL', 'Azure Event Hubs', 'Debezium CDC', 'Grafana', 'Databricks', 'PySpark'],
-      hasKqlSim: true,
     },
     {
       id: 'fastapi_2025',
@@ -55,8 +54,8 @@ export default function JourneyWalkthrough() {
       institution: 'Tata Consultancy Services',
       category: 'ai',
       type: 'milestone',
-      badge: '60% Dev Acceleration Framework',
-      icon: <Zap className="w-5 h-5 text-emerald-400" />,
+      badge: '60% dev acceleration framework',
+      icon: <Zap className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Automated REST API creation, slashing development cycle time from 5 days down to 2 days.',
       detail: 'Engineered a meta-framework using FastAPI and Pydantic that dynamically inspects database table schemas and automatically exposes standard, validated GET REST endpoints with OpenAPI docs.',
       highlights: [
@@ -65,7 +64,6 @@ export default function JourneyWalkthrough() {
         'Strict runtime type validation with Pydantic v2 and auto-generated Swagger documentation',
       ],
       tech: ['FastAPI', 'Pydantic v2', 'Python 3.11', 'PostgreSQL', 'SQLAlchemy', 'OpenAPI'],
-      hasFastApiSim: true,
     },
     {
       id: 'aws_parser_2024',
@@ -76,8 +74,8 @@ export default function JourneyWalkthrough() {
       institution: 'Tata Consultancy Services',
       category: 'ai',
       type: 'milestone',
-      badge: 'AI / OCR Precision Breakthrough',
-      icon: <FileCode className="w-5 h-5 text-purple-400" />,
+      badge: 'AI / OCR precision breakthrough',
+      icon: <FileCode className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Led development of serverless AWS parser achieving 80%+ precision across complex PDF form layouts.',
       detail: 'Combined AWS Step Functions state machines, Textract table layout analysis, Amazon Comprehend NLP, and AWS Augmented AI (A2I) for human-in-the-loop verification on edge cases.',
       highlights: [
@@ -86,7 +84,6 @@ export default function JourneyWalkthrough() {
         'Scalable serverless pipeline processing thousands of documents concurrently',
       ],
       tech: ['AWS Step Functions', 'AWS Textract', 'Amazon Comprehend', 'AWS A2I', 'AWS S3', 'Python'],
-      hasAwsParserSim: true,
     },
     {
       id: 'web_scraping_2023',
@@ -97,8 +94,8 @@ export default function JourneyWalkthrough() {
       institution: 'Tata Consultancy Services',
       category: 'ml',
       type: 'milestone',
-      badge: 'Near-Instant Research Platform',
-      icon: <Search className="w-5 h-5 text-cyan-400" />,
+      badge: 'Near-instant research platform',
+      icon: <Search className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Replaced weeks of manual stakeholder research with automated web & document ingestion into indexed PostgreSQL tables.',
       detail: 'Built custom web scrapers and unstructured text extractors using BeautifulSoup and pdfplumber, streaming unstructured stakeholder data directly into PostgreSQL vector and full-text indexes.',
       highlights: [
@@ -107,7 +104,6 @@ export default function JourneyWalkthrough() {
         'Automated document metadata taxonomy assignment and entity classification',
       ],
       tech: ['BeautifulSoup4', 'pdfplumber', 'PostgreSQL', 'Python', 'Full-Text Search', 'Docker'],
-      hasIngestSim: true,
     },
     {
       id: 'topic_modeling_2022',
@@ -119,7 +115,7 @@ export default function JourneyWalkthrough() {
       category: 'ml',
       type: 'milestone',
       badge: 'Unsupervised ML & NLP',
-      icon: <BrainCircuit className="w-5 h-5 text-rose-400" />,
+      icon: <BrainCircuit className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Created topic modeling pipelines using Gensim & SpaCy for automatic trend discovery in enterprise text corpora.',
       detail: 'Applied Latent Dirichlet Allocation (LDA) and semantic word embeddings to parse large unstructured text datasets, producing interactive PyLDAvis topic clusters for executive decision makers.',
       highlights: [
@@ -128,19 +124,18 @@ export default function JourneyWalkthrough() {
         'Interactive semantic topic visualization dashboards for leadership reporting',
       ],
       tech: ['Python', 'Gensim', 'SpaCy', 'LDA', 'PyLDAvis', 'Pandas', 'Flask'],
-      hasTopicSim: true,
     },
     {
       id: 'tcs_join_2021',
       year: '2021',
       period: 'August 2021',
       isLatest: false,
-      title: 'Joined Tata Consultancy Services (TCS) as Cloud Data Engineer',
+      title: 'Joined Tata Consultancy Services as Cloud Data Engineer',
       institution: 'Kochi, India',
       category: 'cloud',
       type: 'career',
-      badge: 'Enterprise Career Milestone',
-      icon: <Briefcase className="w-5 h-5 text-emerald-400" />,
+      badge: 'Career milestone',
+      icon: <Briefcase className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Embarked on industrial-grade cloud data engineering across Azure & AWS enterprise environments.',
       detail: 'Stepped into architecting scalable ETL/ELT pipelines, streaming telemetry, and cloud data warehousing for high-stakes enterprise clients at TCS.',
       highlights: [
@@ -153,15 +148,15 @@ export default function JourneyWalkthrough() {
     },
     {
       id: 'msc_2021',
-      year: '2019-2021',
+      year: '2019–2021',
       period: '2019 – 2021',
       isLatest: false,
       title: 'Master of Science in Computer Science',
-      institution: 'Mahatma Gandhi University, Kottayam, India',
+      institution: 'Mahatma Gandhi University, Kottayam',
       category: 'education',
       type: 'education',
-      badge: 'Advanced Analytics & Big Data',
-      icon: <GraduationCap className="w-5 h-5 text-blue-400" />,
+      badge: 'Advanced analytics & big data',
+      icon: <GraduationCap className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Specialized in distributed systems, machine learning fundamentals, and scalable data processing architectures.',
       detail: 'Conducted advanced coursework and research in statistical computing, data mining, distributed computing architectures, and neural networks.',
       highlights: [
@@ -174,15 +169,15 @@ export default function JourneyWalkthrough() {
     },
     {
       id: 'bsc_2019',
-      year: '2016-2019',
+      year: '2016–2019',
       period: '2016 – 2019',
       isLatest: false,
       title: 'Bachelor of Science in Computer Science',
-      institution: 'Mahatma Gandhi University, Kottayam, India',
+      institution: 'Mahatma Gandhi University, Kottayam',
       category: 'education',
       type: 'education',
-      badge: 'Academic Foundation',
-      icon: <GraduationCap className="w-5 h-5 text-amber-400" />,
+      badge: 'Academic foundation',
+      icon: <GraduationCap className="w-5 h-5 text-[#B3822A] dark:text-[#D4A853]" />,
       shortDesc: 'Laid core groundwork in algorithms, database design, relational math, and object-oriented programming.',
       detail: 'Focused on fundamental computer science principles, C/C++ programming, SQL query optimization, linear algebra, and relational schema normalization.',
       highlights: [
@@ -195,48 +190,49 @@ export default function JourneyWalkthrough() {
     },
   ];
 
-  // Filtered steps
   const filteredSteps = steps.filter((step) => {
     if (categoryFilter === 'all') return true;
     return step.category === categoryFilter;
   });
 
+  // Pass 4: filter labels — sentence case, shorter
+  const filters = [
+    { id: 'all', label: 'All milestones' },
+    { id: 'cloud', label: 'Cloud & telemetry' },
+    { id: 'ai', label: 'AI & API automation' },
+    { id: 'ml', label: 'ML & ingestion' },
+    { id: 'education', label: 'Education' },
+  ];
+
   return (
     <section id="journey" className="py-24 bg-[#F1ECE3] dark:bg-[#141824] relative overflow-hidden text-[#1A1F2E] dark:text-[#F5F0E8] transition-colors duration-300">
-      {/* Background Decorative Data River */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#D4A853]/10 via-transparent dark:via-[#141824]/90 to-transparent dark:to-[#0B0E14] pointer-events-none" />
-      <div className="absolute inset-0 data-grid-pattern opacity-15 pointer-events-none" />
+      {/* Pass 2: remove radial gradient wash */}
+      <div className="absolute inset-0 data-grid-pattern-light dark:data-grid-pattern opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+        {/* Section Header — Pass 5: font-bold, Pass 4: sentence case */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
-            Engineering <span className="text-[#B3822A] dark:text-[#D4A853]">Journey</span>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
+            Engineering <span className="text-[#B3822A] dark:text-[#D4A853]">journey</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 font-body leading-relaxed">
-            Data engineering milestones in descending chronological order — from real-time Azure Data Explorer telemetry down to academic foundations.
+          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 font-body leading-relaxed">
+            Data engineering milestones in descending order — from real-time Azure ADX telemetry to academic foundations.
           </p>
         </div>
 
-        {/* Category Filters */}
+        {/* Category Filters — Pass 1: consistent spacing, Pass 5: sentence case */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12 font-mono text-xs">
-          {[
-            { id: 'all', label: 'All Milestones (8)' },
-            { id: 'cloud', label: 'Cloud & Telemetry (ADX / Azure)' },
-            { id: 'ai', label: 'AI & API Automation (AWS / FastAPI)' },
-            { id: 'ml', label: 'ML & Ingestion (Gensim / Scrapers)' },
-            { id: 'education', label: 'Academic Foundations (MSc / BSc)' },
-          ].map((cat) => (
+          {filters.map((cat) => (
             <button
               key={cat.id}
               onClick={() => {
                 setCategoryFilter(cat.id as any);
-                addLog('PIPELINE_INSPECT', `Journey Category Filter: ${cat.label}`, 'Chronological sequence filtered');
+                addLog('PIPELINE_INSPECT', `Journey filter: ${cat.label}`);
               }}
-              className={`px-3.5 py-2 rounded-xl border transition-all ${
+              className={`px-3 py-2 rounded-md border transition-colors ${
                 categoryFilter === cat.id
-                  ? 'bg-[#D4A853] dark:bg-[#2D3447] text-[#1A1F2E] dark:text-[#D4A853] border-[#B3822A] dark:border-[#D4A853] font-bold shadow-md'
-                  : 'bg-white dark:bg-[#0B0E14]/80 text-gray-700 dark:text-gray-400 border-gray-300 dark:border-gray-800 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-700'
+                  ? 'bg-[#D4A853] dark:bg-[#2D3447] text-[#1A1F2E] dark:text-[#D4A853] border-[#B3822A] dark:border-[#D4A853] font-medium'
+                  : 'bg-white dark:bg-[#0B0E14]/80 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-800 hover:text-[#B3822A] dark:hover:text-[#D4A853] hover:border-gray-400 dark:hover:border-gray-700'
               }`}
             >
               {cat.label}
@@ -244,79 +240,83 @@ export default function JourneyWalkthrough() {
           ))}
         </div>
 
-        {/* Chronological Vertical Timeline (Space Fully Utilized Across 100% Width) */}
+        {/* Chronological Vertical Timeline */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Glowing Vertical Conduit Line running down the left */}
-          <div className="absolute left-5 sm:left-8 top-3 bottom-8 w-1 bg-gradient-to-b from-[#D4A853] via-emerald-500/50 via-purple-500/40 to-blue-500/30 rounded-full pointer-events-none" />
+          {/* Pass 2: solid amber conduit line, no multi-hue gradient */}
+          <div className="absolute left-5 sm:left-8 top-3 bottom-8 w-px bg-[#B3822A] dark:bg-[#D4A853] opacity-30 rounded-full pointer-events-none" />
 
-          <div className="space-y-12 relative">
+          <div className="space-y-10 relative">
             {filteredSteps.map((step, idx) => (
               <motion.div
                 key={step.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
                 className="relative flex flex-col w-full"
               >
-                {/* Glowing Timeline Marker Node */}
+                {/* Timeline Marker Node — Pass 7: nested radius (outer 12px, inner 8px) */}
                 <div className="absolute left-5 sm:left-8 top-6 transform -translate-x-1/2 z-20 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-2xl bg-white dark:bg-[#0B0E14] border-2 border-[#B3822A] dark:border-[#D4A853] flex items-center justify-center shadow-md dark:shadow-lg text-[#B3822A] dark:text-[#D4A853]">
+                  <div className="w-10 h-10 rounded-xl bg-white dark:bg-[#0B0E14] border border-[#B3822A]/60 dark:border-[#D4A853]/40 flex items-center justify-center shadow-sm">
                     {step.icon}
                   </div>
                 </div>
 
-                {/* Full-Width Milestone Card (Fills 100% space) */}
+                {/* Milestone Card */}
                 <div className="w-full pl-14 sm:pl-20">
-                  <div className="bg-white dark:bg-[#0B0E14] border border-gray-200 dark:border-gray-800 hover:border-[#B3822A]/60 dark:hover:border-[#D4A853]/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 shadow-md dark:shadow-2xl hover:shadow-xl group">
+                  <div className="bg-white dark:bg-[#0B0E14] border border-gray-200 dark:border-gray-800 hover:border-[#B3822A]/40 dark:hover:border-[#D4A853]/40 rounded-xl p-6 sm:p-8 transition-colors duration-200 shadow-sm group">
                     {/* Header Row */}
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 dark:border-gray-800/80 pb-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 dark:border-gray-800 pb-4">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-[#D4A853] text-[#1A1F2E]">
+                        {/* Pass 7: year badge — quiet, no glow */}
+                        <span className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[#D4A853]/15 dark:bg-[#D4A853]/10 text-[#8A6520] dark:text-[#D4A853] border border-[#D4A853]/30">
                           {step.year}
                         </span>
-                        <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-300 dark:border-emerald-500/30">
+                        <span className="text-xs font-mono text-gray-500 dark:text-gray-500">
                           {step.period}
                         </span>
                         {step.isLatest && (
-                          <span className="text-[10px] font-mono bg-emerald-500 text-black font-bold px-2 py-0.5 rounded">
-                            CURRENT ROLE
+                          // Signature: status dot — only for genuinely current role
+                          <span className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 dark:text-emerald-400">
+                            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                            Current
                           </span>
                         )}
-                        <span className="text-xs font-mono text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-[#1A1F2E] px-2.5 py-0.5 rounded border border-gray-200 dark:border-gray-800">
+                        {/* Pass 4: badge in sentence case, no emoji */}
+                        <span className="text-xs font-mono text-gray-500 dark:text-gray-500">
                           {step.badge}
                         </span>
                       </div>
 
-                      <span className="text-xs font-mono text-gray-600 dark:text-gray-400 font-medium">
+                      <span className="text-xs font-mono text-gray-500 dark:text-gray-500">
                         {step.institution}
                       </span>
                     </div>
 
                     {/* Main Card Content */}
-                    <div className="space-y-4 mt-6">
-                      <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
+                    <div className="space-y-4 mt-5">
+                      {/* Pass 5: font-semibold, not extrabold */}
+                      <h3 className="font-display font-semibold text-xl sm:text-2xl text-[#1A1F2E] dark:text-[#F5F0E8] group-hover:text-[#B3822A] dark:group-hover:text-[#D4A853] transition-colors">
                         {step.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-display font-medium leading-relaxed bg-amber-500/10 dark:bg-[#1A1F2E]/60 p-3.5 rounded-xl border-l-4 border-[#B3822A] dark:border-[#D4A853]">
-                        &ldquo;{step.shortDesc}&rdquo;
+                      <p className="text-xs sm:text-sm text-amber-900 dark:text-amber-200/80 font-body leading-relaxed border-l-2 border-[#B3822A]/40 dark:border-[#D4A853]/30 pl-3">
+                        {step.shortDesc}
                       </p>
 
-                      <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-body leading-relaxed">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-body leading-relaxed">
                         {step.detail}
                       </p>
 
-                      {/* Deliverables */}
+                      {/* Deliverables — Pass 3: no Sparkles, plain label */}
                       <div>
-                        <h4 className="font-mono text-xs text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider font-bold mb-2 flex items-center">
-                          <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-500 dark:text-amber-400" />
-                          Key Outcomes &amp; Accomplishments:
+                        <h4 className="font-mono text-xs text-[#B3822A] dark:text-[#D4A853] font-medium mb-2 flex items-center">
+                          Key outcomes
                         </h4>
-                        <ul className="space-y-2">
+                        <ul className="space-y-1.5">
                           {step.highlights.map((item, hIdx) => (
-                            <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-700 dark:text-gray-300">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                            <li key={hIdx} className="flex items-start space-x-2 text-xs text-gray-600 dark:text-gray-400">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -324,11 +324,11 @@ export default function JourneyWalkthrough() {
                       </div>
 
                       {/* Tech Stack */}
-                      <div className="pt-2 flex flex-wrap gap-1.5">
+                      <div className="pt-1 flex flex-wrap gap-1.5">
                         {step.tech.map((t) => (
                           <span
                             key={t}
-                            className="px-2.5 py-1 rounded-lg bg-[#1A1F2E] border border-gray-800 text-[11px] font-mono text-[#D4A853]"
+                            className="px-2 py-1 rounded-md bg-[#1A1F2E] dark:bg-[#1A1F2E] border border-gray-800 text-[11px] font-mono text-[#D4A853]"
                           >
                             {t}
                           </span>

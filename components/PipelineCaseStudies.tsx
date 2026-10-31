@@ -47,28 +47,28 @@ export default function PipelineCaseStudies() {
   const projects: Project[] = [
     {
       id: 'medallion',
-      category: 'Real-time Event Streaming',
+      category: 'Real-time event streaming',
       title: 'Azure Event Hubs & ADX Medallion Architecture',
-      impact: 'Real-time System Health & <100ms Latency',
+      impact: 'Real-time system health & <100ms latency',
       summary:
         'Engineered an end-to-end streaming data pipeline using Debezium CDC, Azure Event Hubs, and Azure Data Explorer (ADX) to establish a Bronze-Silver-Gold Medallion Lakehouse.',
       architecture: {
-        source: 'Transactional OLTP Databases (SQL Server / PostgreSQL)',
+        source: 'Transactional OLTP databases (SQL Server / PostgreSQL)',
         ingestion: 'Debezium Change Data Capture (CDC) + Azure Event Hubs',
-        transformation: 'PySpark / ADX Update Policies (Deduplication & Validation)',
-        storage: 'Azure Data Explorer (ADX) Delta Lakehouse',
-        analytics: 'Grafana Real-time Health Dashboards & Materialized Views',
+        transformation: 'PySpark / ADX Update Policies (deduplication & validation)',
+        storage: 'Azure Data Explorer (ADX) delta lakehouse',
+        analytics: 'Grafana real-time health dashboards & materialized views',
       },
       metrics: [
-        { label: 'Pipeline Model', value: 'Medallion Lakehouse' },
-        { label: 'Dashboard Latency', value: '< 100ms' },
-        { label: 'Uptime Visibility', value: '100% Real-time' },
+        { label: 'Pipeline model', value: 'Medallion lakehouse' },
+        { label: 'Dashboard latency', value: '<100ms' },
+        { label: 'Uptime visibility', value: '100% real-time' },
       ],
       stack: ['Azure Event Hubs', 'Debezium', 'ADX', 'KQL', 'PySpark', 'Grafana', 'Delta Lake'],
       icon: Zap,
       highlightCode: {
-        language: 'sql',
-        code: `-- ADX Silver Layer Update Policy Function
+        language: 'kql',
+        code: `// ADX Silver Layer Update Policy Function
 .create-or-alter function TransformRawCDC() {
     BronzeEventStream
     | where Timestamp > ago(5m)
@@ -84,22 +84,22 @@ export default function PipelineCaseStudies() {
     },
     {
       id: 'fastapi',
-      category: 'API Automation Framework',
+      category: 'API automation framework',
       title: 'Dynamic REST API Generator (FastAPI + Pydantic)',
-      impact: '60% Reduction in API Dev Cycle (5 Days ➔ 2 Days)',
+      impact: '60% reduction in API dev cycle — 5 days to 2',
       summary:
         'Developed an automated API generation framework using FastAPI and Pydantic that dynamically constructs validated REST APIs from database schemas.',
       architecture: {
-        source: 'Relational Database Schemas (PostgreSQL / Azure SQL)',
-        ingestion: 'Introspective Schema Parser & Metadata Inspector',
-        transformation: 'Dynamic Pydantic Model Creation & OpenAPI Schema Generation',
-        storage: 'Async Database Connection Pool (AsyncPG / SQLAlchemy)',
-        analytics: 'FastAPI Dynamic GET Endpoints with Caching Layer',
+        source: 'Relational database schemas (PostgreSQL / Azure SQL)',
+        ingestion: 'Introspective schema parser & metadata inspector',
+        transformation: 'Dynamic Pydantic model creation & OpenAPI schema generation',
+        storage: 'Async database connection pool (AsyncPG / SQLAlchemy)',
+        analytics: 'FastAPI dynamic GET endpoints with caching layer',
       },
       metrics: [
-        { label: 'Development Cycle', value: '5 Days ➔ 2 Days' },
-        { label: 'Time Reduction', value: '60% Cut' },
-        { label: 'Type Safety', value: 'Pydantic Runtime' },
+        { label: 'Development cycle', value: '5 days → 2 days' },
+        { label: 'Time reduction', value: '60%' },
+        { label: 'Type safety', value: 'Pydantic runtime' },
       ],
       stack: ['FastAPI', 'Pydantic', 'Python', 'PostgreSQL', 'AsyncIO', 'OpenAPI', 'Docker'],
       icon: Code2,
@@ -123,22 +123,22 @@ def register_dynamic_routes(table_name: str, fields: dict):
     },
     {
       id: 'document-ai',
-      category: 'Intelligent Document Processing',
+      category: 'Intelligent document processing',
       title: 'AWS Step Functions & Textract Document Parser',
-      impact: '80%+ Precision on Complex PDF Form Layouts',
+      impact: '80%+ precision on complex PDF form layouts',
       summary:
         'Led the development of an AWS cloud-native document parsing platform using Step Functions, Textract, Comprehend NLP, and Augmented AI (A2I) human review loops.',
       architecture: {
-        source: 'Unstructured Stakeholder PDF Layouts & Scanned Documents',
-        ingestion: 'AWS S3 Bucket Notification Triggers',
-        transformation: 'AWS Step Functions Orchestration + AWS Textract Layout Analysis',
-        storage: 'AWS Comprehend NLP Named Entity Extraction + PostgreSQL',
-        analytics: 'AWS A2I Human Review Portal for Low-Confidence Fields',
+        source: 'Unstructured stakeholder PDF layouts & scanned documents',
+        ingestion: 'AWS S3 bucket notification triggers',
+        transformation: 'AWS Step Functions orchestration + Textract layout analysis',
+        storage: 'AWS Comprehend NLP named entity extraction + PostgreSQL',
+        analytics: 'AWS A2I human review portal for low-confidence fields',
       },
       metrics: [
-        { label: 'Parsing Precision', value: '80%+' },
-        { label: 'Workflow Automation', value: 'AWS Step Functions' },
-        { label: 'Layout Types', value: 'Tables, Forms, Key-Value' },
+        { label: 'Parsing precision', value: '80%+' },
+        { label: 'Workflow automation', value: 'AWS Step Functions' },
+        { label: 'Layout types', value: 'Tables, forms, key-value' },
       ],
       stack: ['AWS Step Functions', 'AWS Textract', 'AWS Comprehend', 'AWS A2I', 'AWS S3', 'Python'],
       icon: FileText,
@@ -166,21 +166,21 @@ def register_dynamic_routes(table_name: str, fields: dict):
     },
     {
       id: 'web-scraper',
-      category: 'Automated Ingestion Engine',
+      category: 'Automated ingestion engine',
       title: 'BeautifulSoup & pdfplumber PostgreSQL Ingestion',
-      impact: 'Instant Search Platform Replacing Manual Research',
+      impact: 'Instant search platform replacing manual research',
       summary:
         'Built an automated data ingestion platform using BeautifulSoup and pdfplumber to extract unstructured stakeholder data into indexed PostgreSQL databases.',
       architecture: {
-        source: 'Unstructured Web Pages & Multi-page PDF Reports',
-        ingestion: 'BeautifulSoup HTML Scraper + pdfplumber Extraction Engine',
-        transformation: 'Data Cleaning, Deduplication & Entity Normalization',
-        storage: 'PostgreSQL DB with Full-Text Search Vector Indexes',
-        analytics: 'FastAPI Near-Instant Search Portal for Business Users',
+        source: 'Unstructured web pages & multi-page PDF reports',
+        ingestion: 'BeautifulSoup HTML scraper + pdfplumber extraction engine',
+        transformation: 'Data cleaning, deduplication & entity normalization',
+        storage: 'PostgreSQL with full-text search vector indexes',
+        analytics: 'FastAPI near-instant search portal for business users',
       },
       metrics: [
-        { label: 'Search Latency', value: '< 50ms' },
-        { label: 'Manual Effort Saved', value: '100% Automated' },
+        { label: 'Search latency', value: '<50ms' },
+        { label: 'Manual effort saved', value: '100% automated' },
       ],
       stack: ['BeautifulSoup', 'pdfplumber', 'PostgreSQL', 'Python', 'FastAPI', 'Pandas'],
       icon: Search,
@@ -203,19 +203,19 @@ def extract_pdf_tables_to_postgres(pdf_path: str):
       id: 'topic-modeling',
       category: 'Unsupervised ML & NLP',
       title: 'Topic Modeling System with Gensim & SpaCy',
-      impact: 'Automated Trend Reports & Semantic Dashboards',
+      impact: 'Automated trend reports & semantic dashboards',
       summary:
         'Engineered a scalable NLP topic modeling pipeline using Latent Dirichlet Allocation (LDA), Gensim, and SpaCy to extract hidden semantic trends from unstructured text.',
       architecture: {
-        source: 'Large-scale Unstructured Text Datasets & Stakeholder Logs',
-        ingestion: 'Batch Processing Pipeline via Pandas & PySpark',
-        transformation: 'SpaCy Lemmatization + Gensim Dictionary & Corpus Vectorization',
-        storage: 'LDA Topic Weight Matrices & Coherence Metrics',
-        analytics: 'Interactive Trend Visualization Dashboards',
+        source: 'Large-scale unstructured text datasets & stakeholder logs',
+        ingestion: 'Batch processing pipeline via Pandas & PySpark',
+        transformation: 'SpaCy lemmatization + Gensim dictionary & corpus vectorization',
+        storage: 'LDA topic weight matrices & coherence metrics',
+        analytics: 'Interactive trend visualization dashboards',
       },
       metrics: [
-        { label: 'Model Type', value: 'Unsupervised LDA' },
-        { label: 'NLP Framework', value: 'SpaCy & Gensim' },
+        { label: 'Model type', value: 'Unsupervised LDA' },
+        { label: 'NLP framework', value: 'SpaCy & Gensim' },
       ],
       stack: ['Gensim', 'SpaCy', 'Python', 'Pandas', 'PySpark', 'NLP', 'Topic Modeling'],
       icon: Brain,
@@ -244,17 +244,17 @@ def train_lda_topic_model(documents: list[str]):
 
   return (
     <section id="pipelines" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Header */}
+      {/* Header — Pass 5: font-bold, Pass 4: cleaner copy */}
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#1A1F2E] dark:text-[#F5F0E8] tracking-tight">
-          Data Systems &amp; Pipelines Built by Sooraj
+          Data systems &amp; pipelines
         </h2>
         <p className="mt-3 text-base sm:text-lg text-gray-600 dark:text-[#94A3B8] font-body">
-          In-depth architectural breakdowns of real-time streaming, dynamic API generators, AWS document AI platforms, and ML topic modeling.
+          Architectural breakdowns of real-time streaming, dynamic API generators, AWS document AI, and ML topic modeling.
         </p>
       </div>
 
-      {/* Project Selector Tabs */}
+      {/* Project Selector Tabs — Pass 9: no scale, Pass 3: no emoji */}
       <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
         {projects.map((proj) => {
           const TabIcon = proj.icon;
@@ -265,12 +265,13 @@ def train_lda_topic_model(documents: list[str]):
               key={proj.id}
               onClick={() => {
                 setActiveProject(proj.id);
-                addLog('PIPELINE_INSPECT', `Pipeline Case Study Inspected: ${proj.title}`, `Category: ${proj.category}`);
+                setActiveTab('overview');
+                addLog('PIPELINE_INSPECT', `Pipeline case study: ${proj.title}`, `Category: ${proj.category}`);
               }}
-              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-mono text-xs sm:text-sm transition-all shrink-0 ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-mono text-xs sm:text-sm transition-colors shrink-0 ${
                 isActive
-                  ? 'bg-[#D4A853] text-[#1A1F2E] font-bold shadow-lg scale-105'
-                  : 'bg-white dark:bg-[#2D3447]/80 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white border border-gray-200 dark:border-gray-700/80 hover:border-[#B3822A] dark:hover:border-[#D4A853]/40'
+                  ? 'bg-[#D4A853] text-[#1A1F2E] font-medium'
+                  : 'bg-white dark:bg-[#2D3447]/80 text-gray-600 dark:text-gray-400 hover:text-[#1A1F2E] dark:hover:text-white border border-gray-200 dark:border-gray-700 hover:border-[#B3822A] dark:hover:border-[#D4A853]/40'
               }`}
             >
               <TabIcon className="w-4 h-4" />
@@ -283,47 +284,48 @@ def train_lda_topic_model(documents: list[str]):
       {/* Main Case Study Card */}
       <motion.div
         key={current.id}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="bg-white dark:bg-[#2D3447]/90 backdrop-blur-xl border border-gray-200 dark:border-[#D4A853]/30 rounded-2xl p-6 sm:p-10 shadow-xl dark:shadow-2xl"
+        transition={{ duration: 0.3 }}
+        className="bg-white dark:bg-[#2D3447]/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-xl p-6 sm:p-10 shadow-md"
       >
-        {/* Card Header */}
+        {/* Card Header — Pass 2: no colored shadow, Pass 5: sentence case category */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 dark:border-gray-700/60 pb-6 mb-6">
           <div className="flex items-center space-x-4">
-            <div className="p-3.5 rounded-xl bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#D4A853] border border-gray-300 dark:border-[#D4A853]/30 shadow-inner">
-              <IconComponent className="w-7 h-7" />
+            <div className="p-3 rounded-lg bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#D4A853] border border-gray-200 dark:border-gray-700">
+              <IconComponent className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-xs font-mono text-[#B3822A] dark:text-[#D4A853] uppercase tracking-wider block font-semibold">
+              {/* Pass 5: sentence case, no uppercase tracking */}
+              <span className="text-xs font-mono text-[#B3822A] dark:text-[#D4A853] block">
                 {current.category}
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#1A1F2E] dark:text-[#F5F0E8]">
+              <h3 className="font-display font-semibold text-2xl sm:text-3xl text-[#1A1F2E] dark:text-[#F5F0E8]">
                 {current.title}
               </h3>
             </div>
           </div>
 
-          <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 rounded-xl text-emerald-800 dark:text-emerald-400 font-mono text-xs sm:text-sm font-bold flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4" />
+          <div className="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg text-emerald-800 dark:text-emerald-400 font-mono text-xs flex items-center space-x-2">
+            <CheckCircle2 className="w-3.5 h-3.5" />
             <span>{current.impact}</span>
           </div>
         </div>
 
-        {/* Inner Subtabs: Overview | Architecture | Code */}
-        <div className="flex items-center space-x-2 mb-6 border-b border-gray-200 dark:border-gray-800 pb-3 font-mono text-xs">
+        {/* Inner Subtabs — Pass 3: no emoji, plain text */}
+        <div className="flex items-center space-x-1 mb-6 border-b border-gray-200 dark:border-gray-800 pb-3 font-mono text-xs">
           {[
-            { id: 'overview', label: '📋 System Overview' },
-            { id: 'architecture', label: '🏗️ Pipeline Architecture Flow' },
-            { id: 'code', label: '💻 Code / Query Implementation' },
+            { id: 'overview', label: 'Overview' },
+            { id: 'architecture', label: 'Architecture' },
+            { id: 'code', label: 'Code' },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
+              className={`px-3 py-1.5 rounded-md transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#E8C878] border border-gray-300 dark:border-[#D4A853]/40 font-bold'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-gray-200'
+                  ? 'bg-gray-100 dark:bg-[#0F1419] text-[#B3822A] dark:text-[#E8C878] border border-gray-200 dark:border-gray-700 font-medium'
+                  : 'text-gray-500 dark:text-gray-500 hover:text-[#1A1F2E] dark:hover:text-gray-300'
               }`}
             >
               {tab.label}
@@ -335,17 +337,17 @@ def train_lda_topic_model(documents: list[str]):
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8 space-y-4">
-              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] uppercase font-semibold">Problem &amp; Engineered Solution</h4>
+              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] font-medium">Problem & solution</h4>
               <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-body">
                 {current.summary}
               </p>
 
-              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] uppercase font-semibold pt-2">Key Metrics &amp; Business Value</h4>
+              <h4 className="text-sm font-mono text-[#B3822A] dark:text-[#D4A853] font-medium pt-2">Key metrics</h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {current.metrics.map((m, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-gray-50 dark:bg-[#0F1419] border border-gray-200 dark:border-gray-800">
-                    <span className="text-xs font-mono text-gray-600 dark:text-gray-400 block">{m.label}</span>
-                    <strong className="text-xl font-display text-[#B3822A] dark:text-[#E8C878] font-bold mt-1 block">
+                  <div key={idx} className="p-4 rounded-lg bg-gray-50 dark:bg-[#0F1419] border border-gray-200 dark:border-gray-800">
+                    <span className="text-xs font-mono text-gray-500 dark:text-gray-500 block">{m.label}</span>
+                    <strong className="text-xl font-display font-semibold text-[#B3822A] dark:text-[#E8C878] mt-1 block tabular-nums">
                       {m.value}
                     </strong>
                   </div>
@@ -353,14 +355,14 @@ def train_lda_topic_model(documents: list[str]):
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-gray-50 dark:bg-[#0F1419] p-5 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
+            <div className="lg:col-span-4 bg-gray-50 dark:bg-[#0F1419] p-5 rounded-lg border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
               <div>
-                <h4 className="text-xs font-mono text-gray-600 dark:text-gray-400 uppercase mb-3 font-semibold">Technologies Employed</h4>
-                <div className="flex flex-wrap gap-2">
+                <h4 className="text-xs font-mono text-gray-500 dark:text-gray-500 mb-3">Technologies</h4>
+                <div className="flex flex-wrap gap-1.5">
                   {current.stack.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-1 bg-[#1A1F2E] text-[#E8C878] border border-[#D4A853]/30 rounded text-xs font-mono"
+                      className="px-2 py-1 bg-[#1A1F2E] text-[#E8C878] border border-gray-800 rounded-md text-xs font-mono"
                     >
                       {t}
                     </span>
@@ -368,39 +370,39 @@ def train_lda_topic_model(documents: list[str]):
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-800 text-xs font-mono text-gray-400">
-                <span className="text-[#D4A853] font-bold block mb-1">Architect: Sooraj Krishnan V S</span>
-                <span>Location: TCS Azure / AWS Cloud Environment</span>
+              <div className="mt-6 pt-4 border-t border-gray-800 text-xs font-mono text-gray-500">
+                <span className="text-[#D4A853] font-medium block mb-1">Architect: Sooraj Krishnan V S</span>
+                <span>TCS Azure / AWS cloud environment</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* Tab 2: Architecture Diagram */}
+        {/* Tab 2: Architecture */}
         {activeTab === 'architecture' && (
           <div className="space-y-4">
-            <h4 className="text-xs font-mono text-[#D4A853] uppercase font-semibold">
-              End-to-End Data Flow Architecture
+            <h4 className="text-xs font-mono text-[#D4A853] font-medium">
+              End-to-end data flow
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 font-mono text-xs">
               {[
-                { stage: '1. Data Source', val: current.architecture.source, icon: Server },
+                { stage: '1. Source', val: current.architecture.source, icon: Server },
                 { stage: '2. Ingestion', val: current.architecture.ingestion, icon: Zap },
-                { stage: '3. Transformation', val: current.architecture.transformation, icon: Cpu },
-                { stage: '4. Storage Layer', val: current.architecture.storage, icon: Database },
-                { stage: '5. Analytics / UI', val: current.architecture.analytics, icon: BarChart3 },
+                { stage: '3. Transform', val: current.architecture.transformation, icon: Cpu },
+                { stage: '4. Storage', val: current.architecture.storage, icon: Database },
+                { stage: '5. Analytics', val: current.architecture.analytics, icon: BarChart3 },
               ].map((step, idx) => {
                 const StepIcon = step.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-3.5 bg-[#0F1419] border border-gray-800 rounded-xl flex flex-col justify-between relative group hover:border-[#D4A853] transition-colors"
+                    className="p-3 bg-[#0F1419] border border-gray-800 rounded-lg flex flex-col justify-between hover:border-gray-700 transition-colors"
                   >
                     <div className="flex items-center justify-between text-[#D4A853] mb-2">
-                      <span className="font-bold text-[11px]">{step.stage}</span>
-                      <StepIcon className="w-4 h-4" />
+                      <span className="font-medium text-[11px]">{step.stage}</span>
+                      <StepIcon className="w-3.5 h-3.5" />
                     </div>
-                    <p className="text-gray-300 text-[11px] leading-relaxed">{step.val}</p>
+                    <p className="text-gray-400 text-[11px] leading-relaxed">{step.val}</p>
                   </div>
                 );
               })}
@@ -408,18 +410,18 @@ def train_lda_topic_model(documents: list[str]):
           </div>
         )}
 
-        {/* Tab 3: Code Implementation */}
+        {/* Tab 3: Code — the second moment: rich terminal block */}
         {activeTab === 'code' && (
-          <div className="space-y-3">
-            <div className="flex items-center justify-between font-mono text-xs text-gray-400 bg-[#0F1419] px-4 py-2 rounded-t-xl border-t border-x border-gray-800">
-              <span className="text-[#D4A853] font-bold flex items-center">
-                <Code2 className="w-4 h-4 mr-1.5" /> Sample Implementation Snippet
+          <div className="space-y-0">
+            <div className="flex items-center justify-between font-mono text-xs text-gray-500 bg-[#0F1419] px-4 py-2 rounded-t-lg border-t border-x border-gray-800">
+              <span className="text-[#D4A853] font-medium flex items-center">
+                <Code2 className="w-3.5 h-3.5 mr-1.5" /> Sample snippet
               </span>
-              <span className="uppercase text-[10px] bg-gray-800 px-2 py-0.5 rounded text-gray-300">
+              <span className="text-[10px] bg-gray-800 px-2 py-0.5 rounded text-gray-400">
                 {current.highlightCode.language}
               </span>
             </div>
-            <pre className="text-xs font-mono text-emerald-300 bg-[#0F1419] p-4 rounded-b-xl border border-gray-800 overflow-x-auto leading-relaxed">
+            <pre className="text-xs font-mono text-emerald-300 bg-[#0F1419] p-5 rounded-b-lg border border-gray-800 overflow-x-auto leading-relaxed">
               <code>{current.highlightCode.code}</code>
             </pre>
           </div>
